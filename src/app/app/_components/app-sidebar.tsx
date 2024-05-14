@@ -1,15 +1,8 @@
-import Link from "next/link";
-import {
-  Bell,
-  Home,
-  LineChart,
-  Package,
-  Package2,
-  ShoppingCart,
-  Users,
-} from "lucide-react";
+"use client";
 
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import { Bell, Package2 } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,8 +11,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
+import { appConfig } from "@/config/app";
+import { useSelectedLayoutSegment } from "next/navigation";
+import React from "react";
+import { Icons } from "@/components/icons";
 
 export function AppSidebar() {
+  const segment = useSelectedLayoutSegment();
+
+  const items = appConfig.mainNav;
+
   return (
     <div className="hidden border-r bg-muted/40 md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
@@ -34,49 +43,51 @@ export function AppSidebar() {
           </Button>
         </div>
         <div className="flex-1">
-          <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <Home className="h-4 w-4" />
-              Dashboard
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <ShoppingCart className="h-4 w-4" />
-              Orders
-              <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                6
-              </Badge>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
-            >
-              <Package className="h-4 w-4" />
-              Products{" "}
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <Users className="h-4 w-4" />
-              Customers
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <LineChart className="h-4 w-4" />
-              Analytics
-            </Link>
-          </nav>
+          <ScrollArea className="grid items-start px-2 text-sm font-medium lg:px-4">
+            <Accordion type="multiple" className="p-1">
+              {items.map((item) => {
+                const Icon = Icons[item.icon];
+
+                return item.items ? (
+                  <AccordionItem
+                    value={item.title}
+                    key={item.title}
+                    className="border-none"
+                  >
+                    <AccordionTrigger className="justify-start gap-2 px-2 text-sm capitalize">
+                      <Icon className="size-4" />
+                      {item.title}
+                    </AccordionTrigger>
+                    <AccordionContent className="pl-8">
+                      <div className="flex flex-col gap-6">
+                        {item.items.map((subItem) => (
+                          <Item
+                            key={subItem.title}
+                            href={String(subItem.href)}
+                            segment={String(segment)}
+                          >
+                            {subItem.title}
+                          </Item>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                ) : (
+                  <ItemWithoutItems
+                    key={item.title}
+                    href={item.href}
+                    segment={String(segment)}
+                  >
+                    <Icon className="size-4" />
+                    {item.title}
+                  </ItemWithoutItems>
+                );
+              })}
+            </Accordion>
+          </ScrollArea>
         </div>
         <div className="mt-auto p-4">
-          <Card x-chunk="dashboard-02-chunk-0">
+          <Card>
             <CardHeader className="p-2 pt-0 md:p-4">
               <CardTitle>Upgrade to Pro</CardTitle>
               <CardDescription>
@@ -93,5 +104,63 @@ export function AppSidebar() {
         </div>
       </div>
     </div>
+  );
+}
+
+interface ItemProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string;
+  disabled?: boolean;
+  segment: string;
+}
+
+function Item({
+  children,
+  href,
+  disabled,
+  segment,
+  className,
+  ...props
+}: ItemProps) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        "font-normal text-foreground/70 transition-colors hover:text-foreground",
+        href.includes(segment) && "text-foreground",
+        disabled && "pointer-events-none opacity-60",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+}
+
+interface ItemWithoutItemsProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string;
+  segment: string;
+}
+
+function ItemWithoutItems({
+  children,
+  href,
+  segment,
+  className,
+  ...props
+}: ItemWithoutItemsProps) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        "flex flex-1 items-center gap-2 px-2 py-4 text-start text-sm font-medium transition-all hover:underline",
+        href.includes(segment) && "text-foreground",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </Link>
   );
 }

@@ -12,13 +12,18 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
       </div>
       <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
         <nav className="grid gap-4 text-sm text-muted-foreground">
-          <Link href="#" className="font-semibold text-primary">
+          <Link
+            href="/app/settings/orders"
+            className="font-semibold text-primary"
+          >
             Status do sistema
           </Link>
-          <Link href="#">Sequência do pedido</Link>
-          <Link href="#">Som dos pedidos</Link>
-          <Link href="#">Impressão</Link>
-          <Link href="#">Cancelar pedido</Link>
+          <Link href="/app/settings/orders/order-sequence">
+            Sequência do pedido
+          </Link>
+          <Link href="/app/settings/orders/order-sound">Som dos pedidos</Link>
+          <Link href="/app/settings/orders/printer">Impressão</Link>
+          <Link href="/app/settings/orders/cancel-order">Cancelar pedido</Link>
         </nav>
         {children}
       </div>

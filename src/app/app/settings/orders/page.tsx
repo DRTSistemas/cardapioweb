@@ -13,7 +13,7 @@ export default function SettingsPage() {
     <div className="grid gap-6">
       <Card>
         <CardHeader>
-          <CardTitle>1. Status do sistema</CardTitle>
+          <CardTitle className="text-2xl">1. Status do sistema</CardTitle>
           <CardDescription>
             Defina o status de cada aplicação do seu estabelecimento
           </CardDescription>

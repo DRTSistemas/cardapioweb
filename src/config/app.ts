@@ -29,39 +29,39 @@ export const appConfig = {
       items: [
         {
           title: "Meus pedidos",
-          href: "/app/orders",
+          href: "/app/settings/orders",
         },
         {
           title: "Impressora",
-          href: "/app/printer",
+          href: "/app/settings/printer",
         },
         {
           title: "Integrações",
-          href: "/app/integrations",
+          href: "/app/settings/integrations",
         },
         {
           title: "Cardápio Digital",
-          href: "/app/menu",
+          href: "/app/settings/menu",
         },
         {
           title: "Redes Sociais",
-          href: "/app/social",
+          href: "/app/settings/social",
         },
         {
           title: "Pedidos balcão (PDV)",
-          href: "/app/counter-orders",
+          href: "/app/settings/counter-orders",
         },
         {
           title: "Robô",
-          href: "/app/robot",
+          href: "/app/settings/robot",
         },
         {
           title: "Estabelecimento",
-          href: "/app/establishment",
+          href: "/app/settings/establishment",
         },
         {
           title: "Aplicativo do Garçon",
-          href: "/app/garcon-app",
+          href: "/app/settings/garcon-app",
         },
       ],
     },

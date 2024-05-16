@@ -22,15 +22,14 @@ interface AppNavItemsProps {
 export function AppNavItems({ className }: AppNavItemsProps) {
   const layoutSegment = useSelectedLayoutSegments();
   const { open, setOpen } = useSidebar();
-
   const segment = layoutSegment[layoutSegment.length - 2];
   const items = appConfig.mainNav;
-  console.log(segment);
   if (!items?.length) return null;
+
   return (
     <Accordion
       type="multiple"
-      className={cn("flex w-full flex-col gap-2 text-sm", className)}
+      className={cn("flex w-full flex-col gap-4 text-sm", className)}
     >
       {items.map((item) => {
         if (!item.href && !item.items) {

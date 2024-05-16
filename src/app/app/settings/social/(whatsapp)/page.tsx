@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { WhatsappSocialForm } from "../_components/whatsapp-social-form";
 import { SocialFAQs } from "../_components/social-faqs";
 

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { PrinterNav } from "./_components/printer-nav";
 import { Shell } from "@/components/shell";
 

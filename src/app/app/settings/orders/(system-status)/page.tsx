@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { SystemStatusForm } from "./_components/system-status-form";
+import { SystemStatusForm } from "../_components/system-status-form";
 
 export default function SettingsPage() {
   return (

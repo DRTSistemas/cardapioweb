@@ -11,7 +11,7 @@ export function OrdersNav() {
     {
       title: "1. Status do sistema",
       href: "/app/settings/orders",
-      segment: null,
+      segment: "(system-status)",
     },
     {
       title: "2. Sequência do pedido",

@@ -28,8 +28,9 @@ import React from "react";
 import { Icons } from "@/components/icons";
 
 export function AppSidebar() {
-  const segment = useSelectedLayoutSegment();
+  const layoutSegment = useSelectedLayoutSegments();
 
+  const segment = layoutSegment[layoutSegment.length - 2];
   const items = appConfig.mainNav;
 
   return (

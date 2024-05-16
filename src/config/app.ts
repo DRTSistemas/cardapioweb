@@ -33,7 +33,7 @@ export const appConfig = {
         {
           title: "Meus pedidos",
           href: "/app/settings/orders",
-          segment: "settings",
+          segment: "orders",
         },
         {
           title: "Impressora",

@@ -17,6 +17,7 @@ import {
 
 import { Switch } from "@/components/ui/switch";
 import { toast } from "@/components/ui/use-toast";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const notificationsFormSchema = z.object({
   auto_printer: z.boolean().default(false).optional(),
@@ -100,7 +101,7 @@ export function PrinterForm() {
           />
         </div>
 
-        <Button type="submit">Update notifications</Button>
+        <Button type="submit">Salvar</Button>
       </form>
     </Form>
   );

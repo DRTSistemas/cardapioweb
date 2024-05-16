@@ -14,6 +14,7 @@ export function OrderSequenceForm() {
         <div className="xs:w-auto xs:justify-normal flex w-full items-center justify-between space-x-2">
           <div className="flex items-center">
             <Button
+              type="button"
               variant="outline"
               size="icon"
               className="size-12 rounded-r-none"
@@ -27,6 +28,7 @@ export function OrderSequenceForm() {
               className="h-12 w-28 rounded-none border-x-0"
             />
             <Button
+              type="button"
               variant="outline"
               size="icon"
               className="size-12 rounded-l-none"
@@ -43,6 +45,7 @@ export function OrderSequenceForm() {
           <div className="flex items-center">
             <Button
               variant="outline"
+              type="button"
               size="icon"
               className="size-12 rounded-r-none"
             >
@@ -56,6 +59,7 @@ export function OrderSequenceForm() {
             />
             <Button
               variant="outline"
+              type="button"
               size="icon"
               className="size-12 rounded-l-none"
             >

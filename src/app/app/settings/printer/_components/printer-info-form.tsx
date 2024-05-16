@@ -28,6 +28,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { ChevronDownIcon, MinusIcon, PlusIcon } from "lucide-react";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const profileFormSchema = z.object({
   printer_model: z.string(),
@@ -35,6 +36,7 @@ const profileFormSchema = z.object({
     invalid_type_error: "Select a font",
     required_error: "Please select a font.",
   }),
+  remove_ac: z.boolean().default(false).optional(),
 });
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
@@ -91,7 +93,6 @@ export function PrinterInfoForm() {
                       )}
                       {...field}
                     >
-                      <option value="inter">1 caracter</option>
                       <option value="manrope">2 caracteres</option>
                       <option value="system">3 caracteres</option>
                     </select>
@@ -108,6 +109,7 @@ export function PrinterInfoForm() {
             <div className="xs:w-auto xs:justify-normal flex w-full items-center justify-between space-x-2">
               <div className="flex items-center">
                 <Button
+                  type="button"
                   variant="outline"
                   size="icon"
                   className="size-9 rounded-r-none"
@@ -121,6 +123,7 @@ export function PrinterInfoForm() {
                   className="h-9 w-28 rounded-none border-x-0"
                 />
                 <Button
+                  type="button"
                   variant="outline"
                   size="icon"
                   className="size-9 rounded-l-none"
@@ -132,8 +135,25 @@ export function PrinterInfoForm() {
             </div>
           </div>
         </div>
+        <FormField
+          control={form.control}
+          name="remove_ac"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>Remover acentos</FormLabel>
+              </div>
+            </FormItem>
+          )}
+        />
 
-        <Button type="submit">Update profile</Button>
+        <Button type="submit">Salvar</Button>
       </form>
     </Form>
   );

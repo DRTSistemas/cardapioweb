@@ -115,7 +115,7 @@ export function CancelOrderForm() {
           />
         </div>
 
-        <Button type="submit">Update notifications</Button>
+        <Button type="submit">Salvar</Button>
       </form>
     </Form>
   );

@@ -6,7 +6,7 @@ export default function SettingsPage() {
     <div className="grid gap-6">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">3. Som dos pedidos</CardTitle>
+          <CardTitle className="text-2xl">5. Cancelar pedido</CardTitle>
         </CardHeader>
         <CardContent>
           <CancelOrderForm />

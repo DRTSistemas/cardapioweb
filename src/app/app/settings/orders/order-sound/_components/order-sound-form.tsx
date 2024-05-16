@@ -59,7 +59,7 @@ export function OrderSoundForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
         <h3 className="text-xl font-semibold">
           Tela inicial - Meus pedidos
           <CardDescription>
@@ -89,7 +89,7 @@ export function OrderSoundForm() {
                     </FormItem>
                     <FormItem className="flex items-center space-x-3 space-y-0">
                       <FormControl>
-                        <RadioGroupItem value="mentions" />
+                        <RadioGroupItem value="123" />
                       </FormControl>
                       <FormLabel className="font-normal">
                         Campainha Curta
@@ -137,19 +137,19 @@ export function OrderSoundForm() {
           />
         </div>
 
-        <div>
+        <div className="space-y-8">
+          <h3 className="text-xl font-semibold">
+            Tela inicial - Meus pedidos
+            <CardDescription>
+              A campainha tocará sempre que seu estabelecimento receber um
+              pedido
+            </CardDescription>
+          </h3>
           <FormField
             control={form.control}
             name="type"
             render={({ field }) => (
               <FormItem className="space-y-6">
-                <FormLabel className="text-xl">
-                  Chamados atendente - Robô
-                  <CardDescription>
-                    A notificação vai tocar sempre que um cliente desejar falar
-                    com um atendente
-                  </CardDescription>
-                </FormLabel>
                 <FormControl>
                   <RadioGroup
                     onValueChange={field.onChange}
@@ -170,7 +170,7 @@ export function OrderSoundForm() {
                     </FormItem>
                     <FormItem className="flex items-center space-x-3 space-y-0">
                       <FormControl>
-                        <RadioGroupItem value="mentions" />
+                        <RadioGroupItem value="54" />
                       </FormControl>
                       <FormLabel className="font-normal">
                         Sem notificação

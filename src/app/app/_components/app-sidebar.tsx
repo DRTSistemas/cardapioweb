@@ -20,7 +20,10 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 import { appConfig } from "@/config/app";
-import { useSelectedLayoutSegment } from "next/navigation";
+import {
+  useSelectedLayoutSegment,
+  useSelectedLayoutSegments,
+} from "next/navigation";
 import React from "react";
 import { Icons } from "@/components/icons";
 
@@ -58,16 +61,18 @@ export function AppSidebar() {
                       <Icon className="size-4" />
                       {item.title}
                     </AccordionTrigger>
-                    <AccordionContent className="pl-8">
+                    <AccordionContent className="mt-2 pl-8">
                       <div className="flex flex-col gap-6">
                         {item.items.map((subItem) => (
-                          <Item
+                          <Link
                             key={subItem.title}
-                            href={String(subItem.href)}
-                            segment={String(segment)}
+                            href={subItem.href}
+                            className={cn("font-normal", {
+                              "font-semibold": subItem.segment === segment,
+                            })}
                           >
                             {subItem.title}
-                          </Item>
+                          </Link>
                         ))}
                       </div>
                     </AccordionContent>
@@ -104,36 +109,6 @@ export function AppSidebar() {
         </div>
       </div>
     </div>
-  );
-}
-
-interface ItemProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  href: string;
-  disabled?: boolean;
-  segment: string;
-}
-
-function Item({
-  children,
-  href,
-  disabled,
-  segment,
-  className,
-  ...props
-}: ItemProps) {
-  return (
-    <Link
-      href={href}
-      className={cn(
-        "font-normal text-foreground/70 transition-colors hover:text-foreground",
-        href.includes(segment) && "text-foreground",
-        disabled && "pointer-events-none opacity-60",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </Link>
   );
 }
 

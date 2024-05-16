@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { OrdersNav } from "./_components/orders-nav";
 
 interface SettingsLayoutProps {
   children: React.ReactNode;
@@ -11,20 +12,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
         <h1 className="text-3xl font-semibold">Meus pedidos</h1>
       </div>
       <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-        <nav className="grid gap-4 text-sm text-muted-foreground">
-          <Link
-            href="/app/settings/orders"
-            className="font-semibold text-primary"
-          >
-            Status do sistema
-          </Link>
-          <Link href="/app/settings/orders/order-sequence">
-            Sequência do pedido
-          </Link>
-          <Link href="/app/settings/orders/order-sound">Som dos pedidos</Link>
-          <Link href="/app/settings/orders/printer">Impressão</Link>
-          <Link href="/app/settings/orders/cancel-order">Cancelar pedido</Link>
-        </nav>
+        <OrdersNav />
         {children}
       </div>
     </main>

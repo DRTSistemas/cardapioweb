@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,30 +20,18 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { toast } from "@/components/ui/use-toast";
 
 const notificationsFormSchema = z.object({
-  type: z.enum(["all", "mentions", "none"], {
+  type: z.enum(["all", "mentions", "123"], {
     required_error: "You need to select a notification type.",
   }),
-  mobile: z.boolean().default(false).optional(),
-  communication_emails: z.boolean().default(false).optional(),
-  social_emails: z.boolean().default(false).optional(),
-  marketing_emails: z.boolean().default(false).optional(),
-  security_emails: z.boolean(),
 });
 
 type NotificationsFormValues = z.infer<typeof notificationsFormSchema>;
 
 // This can come from your database or API.
-const defaultValues: Partial<NotificationsFormValues> = {
-  communication_emails: false,
-  marketing_emails: false,
-  social_emails: true,
-  security_emails: true,
-};
 
 export function CancelOrderForm() {
   const form = useForm<NotificationsFormValues>({
     resolver: zodResolver(notificationsFormSchema),
-    defaultValues,
   });
 
   function onSubmit(data: NotificationsFormValues) {
@@ -58,7 +47,10 @@ export function CancelOrderForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="max-w-md space-y-8"
+      >
         <div>
           <FormField
             control={form.control}
@@ -69,31 +61,51 @@ export function CancelOrderForm() {
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    className="flex flex-col space-y-1"
+                    className="flex flex-col space-y-6"
                   >
                     <FormItem className="flex items-center space-x-3 space-y-0">
                       <FormControl>
                         <RadioGroupItem value="all" />
                       </FormControl>
-                      <FormLabel className="font-normal">
-                        Não solicitar senha para cancelamento do pedidos
-                      </FormLabel>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="font-normal">
+                          Não solicitar senha para cancelamento do pedidos
+                        </FormLabel>
+                        <FormDescription>
+                          Qualquer pessoa pode cancelar os pedidos
+                        </FormDescription>
+                      </div>
                     </FormItem>
                     <FormItem className="flex items-center space-x-3 space-y-0">
                       <FormControl>
                         <RadioGroupItem value="mentions" />
                       </FormControl>
-                      <FormLabel className="font-normal">
-                        Solicitar senha do(a) atendente para cancelar pedidos
-                      </FormLabel>
+
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="font-normal">
+                          Solicitar senha do(a) atendente para cancelar pedidos
+                        </FormLabel>
+                        <FormDescription>
+                          Ao cancelar pedidos, será solicidata a senha do(a)
+                          atendente
+                        </FormDescription>
+                      </div>
                     </FormItem>
                     <FormItem className="flex items-center space-x-3 space-y-0">
                       <FormControl>
-                        <RadioGroupItem value="mentions" />
+                        <RadioGroupItem value="123" />
                       </FormControl>
-                      <FormLabel className="font-normal">
-                        Solicitar senha padrão para cancelar pedidos
-                      </FormLabel>
+
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="font-normal">
+                          Solicitar senha padrão para cancelar pedidos
+                        </FormLabel>
+                        <FormDescription>
+                          Crie uma senha padrão e utilize sempre que precisar
+                          cancelar um pedido. Os pedidos só poderão ser
+                          cancelados com essa senha
+                        </FormDescription>
+                      </div>
                     </FormItem>
                   </RadioGroup>
                 </FormControl>

@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head />
       <body
         className={cn(
@@ -25,7 +25,6 @@ export default function RootLayout({
         )}
       >
         {children}
-
         <Toaster />
       </body>
     </html>

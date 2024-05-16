@@ -6,11 +6,11 @@
 /* eslint @typescript-eslint/no-unsafe-assignment:0   */
 
 import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
-import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 
 import React from "react";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const data = [
   {
@@ -105,15 +105,21 @@ export function Kanban() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="flex flex-row gap-4 overflow-x-auto pb-8 pt-1">
-        {orderedData.map((stage) => (
+      <div className="flex h-[calc(100vh-2rem)] flex-row gap-4 pb-20">
+        {orderedData.map((stage, idx) => (
           // Column
           <div key={stage.id} className="w-full min-w-[340px] space-y-2">
-            <div className="flex items-center justify-between rounded border border-dashed p-3">
-              <p className="text-sm font-semibold uppercase">{stage.name}</p>
+            <div
+              className={cn("flex items-center justify-between rounded  p-3", {
+                "bg-yellow-500   dark:bg-yellow-500/70": idx === 0,
+                "bg-orange-500 dark:bg-orange-500/70": idx === 1,
+                "bg-green-500 dark:bg-green-500/70": idx === 2,
+              })}
+            >
+              <p className="text-sm font-semibold">{stage.name}</p>
               <div className="flex gap-1">
-                <Button variant={"ghost"} size={"icon"}>
-                  <DotsHorizontalIcon className="size-4" />
+                <Button variant={"outline"} size={"icon"}>
+                  {stage.items.length}
                 </Button>
               </div>
             </div>
@@ -122,7 +128,11 @@ export function Kanban() {
                 <div
                   ref={provided.innerRef}
                   {...provided.droppableProps}
-                  className="space-y-2 rounded bg-muted/40 p-2"
+                  className={cn("h-full space-y-2 rounded bg-muted/40 p-2", {
+                    // "bg-yellow-500/50 dark:bg-yellow-500/10": idx === 0,
+                    // "bg-orange-500/50 dark:bg-orange-500/10": idx === 1,
+                    // "bg-green-500/50 dark:bg-green-500/10": idx === 2,
+                  })}
                 >
                   {stage.items.map((order, idx) => (
                     // Card
@@ -136,7 +146,9 @@ export function Kanban() {
                           {...provided.dragHandleProps}
                           {...provided.draggableProps}
                           ref={provided.innerRef}
-                          className="relative w-full rounded-md border bg-background p-3"
+                          className={cn(
+                            "relative w-full rounded-md border bg-background p-3",
+                          )}
                         >
                           <div className="grid gap-1">
                             <div className="flex">

@@ -55,7 +55,7 @@ export function AppNavItems({ className }: AppNavItemsProps) {
             key={item.title}
             className="border-none"
           >
-            <AccordionTrigger className="flex w-full items-center rounded-md border border-transparent px-2 py-1 text-muted-foreground data-[state=open]:text-primary">
+            <AccordionTrigger className="flex w-full items-center rounded-md border border-transparent px-2 py-1 data-[state=open]:text-primary">
               <div className="flex flex-row items-center gap-2">
                 <Icon className="size-4" />
                 {item.title}
@@ -66,7 +66,7 @@ export function AppNavItems({ className }: AppNavItemsProps) {
                 <Link
                   aria-label={item.title}
                   key={subItem.title}
-                  href={subItem.href}
+                  href={subItem.disabled ? "#" : subItem.href}
                   onClick={() => {
                     if (open) setOpen(false);
                   }}
@@ -75,8 +75,11 @@ export function AppNavItems({ className }: AppNavItemsProps) {
                     className={cn(
                       "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:bg-muted hover:text-foreground",
                       subItem.segment === String(segment)
-                        ? "bg-muted font-medium text-foreground"
-                        : "text-muted-foreground",
+                        ? "bg-muted font-medium"
+                        : "",
+                      subItem.disabled
+                        ? "cursor-default text-muted-foreground"
+                        : "",
                     )}
                   >
                     <span>{subItem.title}</span>
@@ -89,7 +92,7 @@ export function AppNavItems({ className }: AppNavItemsProps) {
           <Link
             aria-label={item.title}
             key={item.title}
-            href={item.href}
+            href={item.disabled ? "#" : item.href}
             onClick={() => {
               if (open) setOpen(false);
             }}
@@ -97,9 +100,8 @@ export function AppNavItems({ className }: AppNavItemsProps) {
             <span
               className={cn(
                 "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:bg-muted hover:text-foreground",
-                item.segment === String(segment)
-                  ? "bg-muted font-medium text-foreground"
-                  : "text-muted-foreground",
+                item.segment === String(segment) ? "bg-muted font-medium" : "",
+                item.disabled ? "cursor-default text-muted-foreground" : "",
               )}
             >
               <Icon className="size-4" />

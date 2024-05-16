@@ -4,7 +4,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-import { ArchiveX } from "lucide-react";
 import { AppNavItems } from "./app-nav-items";
 
 interface DashboardSidebarProps extends React.HTMLAttributes<HTMLElement> {
@@ -20,10 +19,9 @@ export function AppSidebar({
     <aside className={cn("h-screen w-full", className)} {...props}>
       <div className="hidden h-[3.55rem] items-center border-b border-border/60 px-4 lg:flex lg:px-6">
         <Link
-          href="/"
-          className="flex w-fit items-center text-foreground/90 transition-colors hover:text-foreground"
+          href="/app"
+          className="flex w-fit items-center font-bold text-foreground/90 transition-colors hover:text-foreground"
         >
-          <ArchiveX className="mb-1 mr-2 size-6" aria-hidden="true" />
           Cardapio Web
         </Link>
       </div>

@@ -47,8 +47,8 @@ export const appConfig = {
         },
         {
           title: "Cardápio Digital",
-          href: "/app/settings/menu",
-          segment: "menu",
+          href: "/app/settings/menu-web",
+          segment: "menu-web",
         },
         {
           title: "Redes Sociais",

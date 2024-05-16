@@ -1,3 +1,4 @@
+import { Shell } from "@/components/shell";
 import { MenuWebsNav } from "./_components/menu-web-nav";
 
 interface SettingsLayoutProps {
@@ -6,7 +7,7 @@ interface SettingsLayoutProps {
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
-    <main className="flex flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
+    <Shell variant={"sidebar"}>
       <div className="mx-auto grid w-full max-w-6xl gap-2">
         <h1 className="text-3xl font-semibold">Cardápio Digital</h1>
       </div>
@@ -14,6 +15,6 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
         <MenuWebsNav />
         {children}
       </div>
-    </main>
+    </Shell>
   );
 }

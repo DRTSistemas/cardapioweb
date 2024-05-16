@@ -22,7 +22,7 @@ export const appConfig = {
   mainNav: [
     {
       title: "Meus pedidos",
-      href: "/app/orders",
+      href: "/app",
       icon: "dashboard",
       segment: null,
     },

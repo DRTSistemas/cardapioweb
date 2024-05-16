@@ -1,6 +1,8 @@
+import { fontSans } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 
-import { GeistSans } from "geist/font/sans";
+import { Toaster } from "sonner";
 
 export const metadata = {
   title: "Create T3 App",
@@ -14,8 +16,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body
+        className={cn(
+          "dark min-h-screen bg-background font-sans antialiased",
+          fontSans.variable,
+        )}
+      >
+        {children}
+
+        <Toaster />
+      </body>
     </html>
   );
 }

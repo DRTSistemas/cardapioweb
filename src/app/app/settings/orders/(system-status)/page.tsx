@@ -7,10 +7,11 @@ import {
 } from "@/components/ui/card";
 
 import { SystemStatusForm } from "../_components/system-status-form";
+import { Shell } from "@/components/shell";
 
 export default function SettingsPage() {
   return (
-    <div className="grid gap-6">
+    <Shell variant={"sidebar"}>
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">1. Status do sistema</CardTitle>
@@ -22,6 +23,6 @@ export default function SettingsPage() {
           <SystemStatusForm />
         </CardContent>
       </Card>
-    </div>
+    </Shell>
   );
 }

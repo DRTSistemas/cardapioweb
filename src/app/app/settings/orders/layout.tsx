@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { OrdersNav } from "./_components/orders-nav";
+import { Shell } from "@/components/shell";
 
 interface SettingsLayoutProps {
   children: React.ReactNode;
@@ -7,7 +7,7 @@ interface SettingsLayoutProps {
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
   return (
-    <main className="flex flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
+    <Shell variant="sidebar" className="gap-4">
       <div className="mx-auto grid w-full max-w-6xl gap-2">
         <h1 className="text-3xl font-semibold">Meus pedidos</h1>
       </div>
@@ -15,6 +15,6 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
         <OrdersNav />
         {children}
       </div>
-    </main>
+    </Shell>
   );
 }

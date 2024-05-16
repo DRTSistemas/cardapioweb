@@ -31,7 +31,7 @@ export function AppSidebar({
         {children}
       </div>
       <ScrollArea className="h-[calc(100vh-8rem)] px-3 py-2.5 lg:px-5">
-        <AppNavItems />
+        <AppNavItems className="mt-4" />
       </ScrollArea>
     </aside>
   );

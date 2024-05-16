@@ -24,7 +24,7 @@ export const appConfig = {
       title: "Meus pedidos",
       href: "/app",
       icon: "dashboard",
-      segment: null,
+      segment: "undefined",
     },
     {
       title: "Configurações",

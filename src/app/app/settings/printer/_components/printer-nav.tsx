@@ -15,8 +15,8 @@ export function PrinterNav() {
     },
     {
       title: "2. Configurações avançadas",
-      href: "/app/settings/printer/advenced-settings",
-      segment: "advenced-settings",
+      href: "/app/settings/printer/advanced-settings",
+      segment: "advanced-settings",
     },
     {
       title: "3. Comanda",

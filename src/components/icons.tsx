@@ -1,5 +1,15 @@
 import { AvatarIcon, DashboardIcon, ImageIcon } from "@radix-ui/react-icons";
 import type { IconProps } from "@radix-ui/react-icons/dist/types";
+import {
+  Bot,
+  Calendar,
+  ChefHat,
+  Cuboid,
+  FilePenIcon,
+  LineChart,
+  Server,
+  Ticket,
+} from "lucide-react";
 
 export const Icons = {
   menu: ({ ...props }: IconProps) => (
@@ -154,6 +164,14 @@ export const Icons = {
   dashboard: DashboardIcon,
   avatar: AvatarIcon,
   placeholder: ImageIcon,
+  filepenline: FilePenIcon,
+  cuboid: Cuboid,
+  scheduled: Calendar,
+  linechart: LineChart,
+  chefhat: ChefHat,
+  server: Server,
+  bot: Bot,
+  coupon: Ticket,
 };
 export {
   EyeOpenIcon,

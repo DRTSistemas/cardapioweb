@@ -33,6 +33,21 @@ export function AppNavItems({ className }: AppNavItemsProps) {
       className={cn("flex w-full flex-col gap-2 text-sm", className)}
     >
       {items.map((item) => {
+        if (!item.href && !item.items) {
+          return (
+            <div key={item.title} className="relative my-2">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-start text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">
+                  {item.title}
+                </span>
+              </div>
+            </div>
+          );
+        }
+
         const Icon = Icons[item.icon];
 
         return item.items ? (
@@ -41,13 +56,13 @@ export function AppNavItems({ className }: AppNavItemsProps) {
             key={item.title}
             className="border-none"
           >
-            <AccordionTrigger className="flex w-full items-center rounded-md border border-transparent px-2 py-1">
+            <AccordionTrigger className="flex w-full items-center rounded-md border border-transparent px-2 py-1 text-muted-foreground data-[state=open]:text-primary">
               <div className="flex flex-row items-center gap-2">
                 <Icon className="size-4" />
                 {item.title}
               </div>
             </AccordionTrigger>
-            <AccordionContent className="mt-2 flex flex-col gap-2 pl-8">
+            <AccordionContent className="mt-2 flex flex-col gap-4 pl-8">
               {item.items.map((subItem) => (
                 <Link
                   aria-label={item.title}

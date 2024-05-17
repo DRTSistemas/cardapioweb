@@ -69,8 +69,8 @@ export const appConfig = {
         },
         {
           title: "Images do cardárpio",
-          href: "/app/menu-manager/images-menu",
-          segment: "images-menu",
+          href: "/app/menu-manager/menu-images",
+          segment: "menu-images",
           disabled: false,
         },
         {

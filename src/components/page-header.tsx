@@ -1,3 +1,5 @@
+// @see https://github.com/shadcn-ui/ui/blob/main/apps/www/components/page-header.tsx
+
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
@@ -34,7 +36,7 @@ const headingVariants = cva(
     variants: {
       size: {
         default: "text-3xl md:text-5xl",
-        sm: "text-xl",
+        sm: "text-xl md:text-3xl",
         lg: "text-3xl sm:text-5xl md:text-6xl lg:text-7xl",
       },
     },
@@ -67,7 +69,6 @@ const descriptionVariants = cva(
     variants: {
       size: {
         default: "text-base sm:text-lg",
-        xs: "text-xs",
         sm: "text-sm sm:text-base",
         lg: "text-lg sm:text-xl",
       },

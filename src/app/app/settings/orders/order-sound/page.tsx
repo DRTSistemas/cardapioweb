@@ -1,17 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { OrderSoundForm } from "./_components/order-sound-form";
+import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { OrderSoundForm } from "./order-sound-form";
 
-export default function SettingsPage() {
+export default function Page() {
   return (
     <div className="grid gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">3. Som dos pedidos</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <OrderSoundForm />
-        </CardContent>
-      </Card>
+      <SettingsCard title="3. Som dos pedidos">
+        <OrderSoundForm />
+      </SettingsCard>
     </div>
   );
 }

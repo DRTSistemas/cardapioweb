@@ -1,3 +1,3 @@
 export default function Page() {
-  return <div>Integrations</div>;
+  return <div>Soon</div>;
 }

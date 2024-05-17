@@ -1,17 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MenuWebSettingsForm } from "./_components/menu-web-settings-form";
+import { MenuWebSettingsForm } from "./menu-web-settings-form";
+import { SettingsCard } from "../../../../../components/cards/settings-card";
 
-export default function SettingsPage() {
+export default function Page() {
   return (
     <div className="grid gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">1. Configurações</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <MenuWebSettingsForm />
-        </CardContent>
-      </Card>
+      <SettingsCard title="1. Configurações">
+        <MenuWebSettingsForm />
+      </SettingsCard>
     </div>
   );
 }

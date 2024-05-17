@@ -1,17 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ComandaSettingsPrinterForm } from "./_components/comanda-settings-printer-form";
+import { ComandaSettingsPrinterForm } from "./comanda-settings-printer-form";
+import { SettingsCard } from "@/components/cards/settings-card";
 
 export default function Page() {
   return (
     <div className="grid gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">3. Comanda</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ComandaSettingsPrinterForm />
-        </CardContent>
-      </Card>
+      <SettingsCard title="3. Comanda">
+        <ComandaSettingsPrinterForm />
+      </SettingsCard>
     </div>
   );
 }

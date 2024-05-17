@@ -1,20 +1,50 @@
-import { OrdersNav } from "./_components/orders-nav";
-import { Shell } from "@/components/shell";
+import { PageHeader, PageHeaderHeading } from "@/components/page-header";
 
-interface SettingsLayoutProps {
+import { Shell } from "@/components/shell";
+import { SettingsLayoutWithNav } from "../_components/settings-nav";
+
+interface LayoutProps {
   children: React.ReactNode;
 }
 
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+export default function Layout({ children }: LayoutProps) {
+  const items = [
+    {
+      title: "1. Status do sistema",
+      href: "/app/settings/orders",
+      segment: "(system-status)",
+    },
+    {
+      title: "2. Sequência do pedido",
+      href: "/app/settings/orders/order-sequence",
+      segment: "order-sequence",
+    },
+    {
+      title: "3. Som dos pedidos",
+      href: "/app/settings/orders/order-sound",
+      segment: "order-sound",
+    },
+    {
+      title: "4. Impressão",
+      href: "/app/settings/orders/printer",
+      segment: "printer",
+    },
+    {
+      title: "5. Cancelar pedido",
+      href: "/app/settings/orders/cancel-order",
+      segment: "cancel-order",
+    },
+  ];
+
   return (
     <Shell variant="sidebar" className="gap-4">
-      <div className="mx-auto grid w-full max-w-6xl gap-2">
-        <h1 className="text-3xl font-semibold">Meus pedidos</h1>
-      </div>
-      <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-        <OrdersNav />
-        {children}
-      </div>
+      <PageHeader>
+        <PageHeaderHeading size="sm" className="flex-1">
+          Meus pedidos
+        </PageHeaderHeading>
+      </PageHeader>
+
+      <SettingsLayoutWithNav items={items}>{children}</SettingsLayoutWithNav>
     </Shell>
   );
 }

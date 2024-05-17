@@ -1,19 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { WhatsappSocialForm } from "../_components/whatsapp-social-form";
-import { SocialFAQs } from "../_components/social-faqs";
+import { WhatsappSocialForm } from "./whatsapp-social-form";
+import { SettingsCard } from "../../../../../components/cards/settings-card";
 
-export default function SettingsPage() {
+export default function Page() {
   return (
     <div className="grid gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">1. WhatsApp</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <WhatsappSocialForm />
-          <SocialFAQs />
-        </CardContent>
-      </Card>
+      <SettingsCard title="1. WhatsApp">
+        <WhatsappSocialForm />
+      </SettingsCard>
     </div>
   );
 }

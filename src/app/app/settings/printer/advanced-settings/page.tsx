@@ -1,18 +1,15 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-import { AdvanvedSettingsPrinterForm } from "./_components/advanced-settings-printer-form";
+import { AdvanvedSettingsPrinterForm } from "./advanced-settings-printer-form";
+import { SettingsCard } from "../../../../../components/cards/settings-card";
 
 export default function Page() {
   return (
     <div className="grid gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">2. Configuração avançadas</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <AdvanvedSettingsPrinterForm />
-        </CardContent>
-      </Card>
+      <SettingsCard
+        title="2. Configuração avançadas"
+        description="Escolha e configure sua impressora térmica"
+      >
+        <AdvanvedSettingsPrinterForm />
+      </SettingsCard>
     </div>
   );
 }

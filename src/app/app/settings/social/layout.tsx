@@ -1,20 +1,33 @@
 import { Shell } from "@/components/shell";
-import { SocialNav } from "./_components/social-nav";
 
-interface SettingsLayoutProps {
+import { PageHeader, PageHeaderHeading } from "@/components/page-header";
+import { SettingsLayoutWithNav } from "../_components/settings-nav";
+
+interface LayoutProps {
   children: React.ReactNode;
 }
 
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+export default function Layout({ children }: LayoutProps) {
+  const items = [
+    {
+      title: "1. WhatsApp",
+      href: "/app/settings/social",
+      segment: "(whatsapp)",
+    },
+    {
+      title: "2. Facebook/Instagram",
+      href: "/app/settings/social/facebook-instagram",
+      segment: "facebook-instagram",
+    },
+  ];
   return (
     <Shell variant="sidebar">
-      <div className="mx-auto grid w-full max-w-6xl gap-2">
-        <h1 className="text-3xl font-semibold">Redes Sociais</h1>
-      </div>
-      <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-        <SocialNav />
-        {children}
-      </div>
+      <PageHeader>
+        <PageHeaderHeading size="sm" className="flex-1">
+          Meus pedidos
+        </PageHeaderHeading>
+      </PageHeader>
+      <SettingsLayoutWithNav items={items}>{children}</SettingsLayoutWithNav>
     </Shell>
   );
 }

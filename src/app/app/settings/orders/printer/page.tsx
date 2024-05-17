@@ -1,24 +1,15 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { PrinterForm } from "./_components/printer-form";
+import { PrinterForm } from "./printer-form";
+import { SettingsCard } from "../../../../../components/cards/settings-card";
 
-export default function SettingsPage() {
+export default function Page() {
   return (
     <div className="grid gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">4. Impressão</CardTitle>
-          <CardDescription>Configure a impressão automática</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <PrinterForm />
-        </CardContent>
-      </Card>
+      <SettingsCard
+        title="4. Impressão"
+        description="Configure a impressão automática"
+      >
+        <PrinterForm />
+      </SettingsCard>
     </div>
   );
 }

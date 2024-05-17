@@ -1,3 +1,4 @@
+import { PageHeader, PageHeaderHeading } from "@/components/page-header";
 import { Shell } from "@/components/shell";
 
 interface LayoutProps {
@@ -6,13 +7,13 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <Shell variant={"sidebar"}>
-      <div className="mx-auto grid w-full max-w-6xl gap-2">
-        <h1 className="text-3xl font-semibold">Integrações</h1>
-      </div>
-      <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-        {children}
-      </div>
+    <Shell variant="sidebar" className="gap-4">
+      <PageHeader className="max-w-full gap-4">
+        <PageHeaderHeading size="sm" className="flex-1">
+          Integrações
+        </PageHeaderHeading>
+      </PageHeader>
+      {children}
     </Shell>
   );
 }

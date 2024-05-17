@@ -1,17 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CancelOrderForm } from "./_components/cancel-order-form";
+import { CancelOrderForm } from "./cancel-order-form";
+import { SettingsCard } from "../../../../../components/cards/settings-card";
 
-export default function SettingsPage() {
+export default function Page() {
   return (
     <div className="grid gap-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">5. Cancelar pedido</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CancelOrderForm />
-        </CardContent>
-      </Card>
+      <SettingsCard title="5. Cancelar pedido">
+        <CancelOrderForm />
+      </SettingsCard>
     </div>
   );
 }

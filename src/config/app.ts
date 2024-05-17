@@ -64,7 +64,7 @@ export const appConfig = {
         {
           title: "Gestor",
           href: "/app/menu-manager",
-          segment: "(manager)",
+          segment: "menu-manager",
           disabled: false,
         },
         {

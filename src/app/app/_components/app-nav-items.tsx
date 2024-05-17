@@ -25,6 +25,7 @@ export function AppNavItems({ className }: AppNavItemsProps) {
   const segment = layoutSegment[layoutSegment.length - 2];
   const items = appConfig.mainNav;
   if (!items?.length) return null;
+  console.log(segment);
 
   return (
     <Accordion

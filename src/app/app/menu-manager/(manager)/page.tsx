@@ -1,6 +1,7 @@
 import { PageHeader, PageHeaderHeading } from "@/components/page-header";
 import { Shell } from "@/components/shell";
-import { CategoriesForm } from "./categories-form";
+
+import { Categories } from "./categories";
 
 export default function Page() {
   return (
@@ -8,7 +9,7 @@ export default function Page() {
       <PageHeader>
         <PageHeaderHeading size="sm">Gestor de cardápio</PageHeaderHeading>
       </PageHeader>
-      <CategoriesForm />
+      <Categories />
     </Shell>
   );
 }

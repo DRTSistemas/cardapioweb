@@ -35,7 +35,7 @@ export function AppNavItems({ className }: AppNavItemsProps) {
       {items.map((item) => {
         if (!item.href && !item.items) {
           return (
-            <div key={item.title} className="relative my-2">
+            <div key={item.title + "divider"} className="relative my-2">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t" />
               </div>

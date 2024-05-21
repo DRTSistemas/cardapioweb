@@ -8,6 +8,7 @@ import {
   FilePenIcon,
   LineChart,
   Server,
+  ShoppingCart,
   Ticket,
 } from "lucide-react";
 
@@ -172,6 +173,7 @@ export const Icons = {
   server: Server,
   bot: Bot,
   coupon: Ticket,
+  cart: ShoppingCart,
 };
 export {
   EyeOpenIcon,

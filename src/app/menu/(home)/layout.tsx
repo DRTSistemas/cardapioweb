@@ -1,30 +1,22 @@
-import React from "react";
+import { MenuHeaderDesktop } from "../_components/menu-header-desktop";
 import { MenuHeaderMobile } from "../_components/menu-header-mobile";
+import { MenuSidebar } from "../_components/menu-sidebar";
 
-import { Badge } from "@/components/ui/badge";
-
-export default function MenuLayout({
-  children,
-}: {
+interface LayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen flex-1">
-      <MenuHeaderMobile>
-        <p className="font-semibold">DRT Sistemas</p>
-      </MenuHeaderMobile>
-      <div className="flex w-full flex-row items-center justify-between border-b border-border/60 p-2 px-4">
-        <div className="space-x-2">
-          <Badge variant={"destructive"}>Offline</Badge>
-          <span className="text-xs">Sem pedido minímo</span>
-        </div>
-        <p className="text-xs">Perfil da loja</p>
+    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+      <MenuSidebar />
+      <div className="flex flex-col">
+        <MenuHeaderMobile />
+        <MenuHeaderDesktop />
+        <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+          {children}
+        </main>
       </div>
-      <div className="sticky top-14 space-x-2 border-b border-border/60 bg-background p-2 px-4">
-        <Badge>Lanches</Badge>
-        <Badge>Bebidas</Badge>
-      </div>
-      {children}
     </div>
   );
 }

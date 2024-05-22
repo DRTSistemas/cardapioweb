@@ -1,5 +1,6 @@
 import { MenuHeaderDesktop } from "../_components/menu-header-desktop";
 import { MenuHeaderMobile } from "../_components/menu-header-mobile";
+import { MenuNavMobile } from "../_components/menu-nav-mobile";
 import { MenuSidebar } from "../_components/menu-sidebar";
 
 interface LayoutProps {
@@ -17,6 +18,7 @@ export default function Layout({ children }: LayoutProps) {
           {children}
         </main>
       </div>
+      <MenuNavMobile />
     </div>
   );
 }

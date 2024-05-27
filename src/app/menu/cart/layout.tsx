@@ -12,7 +12,7 @@ export default function MenuLayout({
       <div className="fixed bottom-0 z-50 w-full border-t border-border/60 bg-background p-4">
         <Button
           disabled
-          className="mx-auto flex w-full items-center  justify-between md:w-2/3 lg:w-1/3"
+          className="mx-auto flex w-full max-w-2xl items-center justify-between"
         >
           <span>Avançar (0)</span>
           <span>R$ 0,00</span>

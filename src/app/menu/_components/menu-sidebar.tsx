@@ -2,15 +2,7 @@ import Link from "next/link";
 import { ChevronRight, Package2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-
-const categories = [
-  {
-    title: "Lanches",
-  },
-  {
-    title: "Bebidas",
-  },
-];
+import { products as categorias } from "@/mocks/products";
 
 export function MenuSidebar() {
   return (
@@ -27,13 +19,13 @@ export function MenuSidebar() {
         </div>
         <div className="flex-1">
           <nav className="grid items-start gap-1 px-2 text-sm font-medium">
-            {categories.map((item) => (
+            {categorias.map(({ categoria }) => (
               <Link
-                key={item.title}
-                href="#"
+                key={categoria}
+                href={`#${categoria}`}
                 className="flex items-center gap-3 rounded-lg px-4 py-2 text-lg text-muted-foreground transition-all hover:bg-accent hover:text-primary"
               >
-                {item.title}
+                {categoria}
                 <ChevronRight className="ml-auto size-4" />
               </Link>
             ))}

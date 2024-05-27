@@ -17,12 +17,13 @@ type NavItem = {
 export function MenuTabs() {
   const router = useRouter();
   const segment = useSelectedLayoutSegment();
+  console.log(segment);
 
   const tabs = [
     {
       title: "Inicío",
       href: `/menu`,
-      isActive: segment === "(home)",
+      isActive: segment === null,
       icon: "home",
     },
     {

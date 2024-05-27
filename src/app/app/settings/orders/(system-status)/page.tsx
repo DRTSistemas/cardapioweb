@@ -1,6 +1,6 @@
-import { SystemStatusForm } from "./system-status-form";
+import { SystemStatusForm } from "./system-status-form"
 
-import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
 
 export default function Page() {
   return (
@@ -12,5 +12,5 @@ export default function Page() {
         <SystemStatusForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

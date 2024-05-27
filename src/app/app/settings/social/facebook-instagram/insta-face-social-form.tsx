@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -12,23 +12,23 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@/components/ui/form";
+} from "@/components/ui/form"
 
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/components/ui/use-toast"
 
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@/components/ui/switch"
 
 const profileFormSchema = z.object({
   disabled: z.boolean().default(false).optional(),
-});
+})
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 export function InstaFaceSocialForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     mode: "onChange",
-  });
+  })
 
   function onSubmit(data: ProfileFormValues) {
     toast({
@@ -38,7 +38,7 @@ export function InstaFaceSocialForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    });
+    })
   }
 
   return (
@@ -90,5 +90,5 @@ export function InstaFaceSocialForm() {
         <Button type="submit">Salvar</Button>
       </form>
     </Form>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { CancelOrderForm } from "./cancel-order-form";
-import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
+import { CancelOrderForm } from "./cancel-order-form"
 
 export default function Page() {
   return (
@@ -8,5 +8,5 @@ export default function Page() {
         <CancelOrderForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import { InstaFaceSocialForm } from "./insta-face-social-form";
+import { InstaFaceSocialForm } from "./insta-face-social-form"
 
-import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
 
 export default function Page() {
   return (
@@ -9,5 +9,5 @@ export default function Page() {
         <InstaFaceSocialForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

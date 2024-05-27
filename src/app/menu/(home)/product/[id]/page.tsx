@@ -1,20 +1,20 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { ChevronLeft, ShoppingCart } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { Button, buttonVariants } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
+import { ChevronLeft, ShoppingCart } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 interface ProductPageProps {
   params: {
-    id: string;
-  };
+    id: string
+  }
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
-  const productId = decodeURIComponent(params.id);
+  const productId = decodeURIComponent(params.id)
 
   return (
-    <main className="mx-auto flex max-w-4xl flex-1 flex-col gap-4 ">
+    <main className="mx-auto flex max-w-4xl flex-1 flex-col gap-4">
       <div className="flex flex-row items-center gap-2 border-b pb-2">
         <Link
           className={buttonVariants({ variant: "ghost", size: "icon" })}
@@ -22,12 +22,12 @@ export default function ProductPage({ params }: ProductPageProps) {
         >
           <ChevronLeft className="size-4" />
         </Link>
-        <h1 className="text-lg font-semibold">Detalhes do produto </h1>
+        <h1 className="font-semibold text-lg">Detalhes do produto </h1>
       </div>
       <div className="space-y-6">
         <div className="flex flex-col gap-5">
-          <h2 className="text-3xl font-bold">Produto {productId}</h2>
-          <p className="text-xl font-semibold text-blue-500">R$ 6,00</p>
+          <h2 className="font-bold text-3xl">Produto {productId}</h2>
+          <p className="font-semibold text-blue-500 text-xl">R$ 6,00</p>
           <p className="text-muted-foreground">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
             vitae ullam tenetur natus! Molestias iusto harum eos laudantium
@@ -57,5 +57,5 @@ export default function ProductPage({ params }: ProductPageProps) {
         Adicionar ao carrinho
       </Button>
     </main>
-  );
+  )
 }

@@ -1,12 +1,12 @@
 // @see https://github.com/shadcn-ui/ui/blob/main/apps/www/components/page-header.tsx
 
-import { cva, type VariantProps } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  as?: React.ElementType;
-  withPadding?: boolean;
+  as?: React.ElementType
+  withPadding?: boolean
 }
 
 function PageHeader({
@@ -20,14 +20,14 @@ function PageHeader({
     <Comp
       className={cn(
         "flex max-w-[61.25rem] flex-col gap-1",
-        withPadding && "py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20",
+        withPadding && "py-8 lg:py-24 md:py-12 lg:pb-20 md:pb-8",
         className,
       )}
       {...props}
     >
       {children}
     </Comp>
-  );
+  )
 }
 
 const headingVariants = cva(
@@ -44,12 +44,12 @@ const headingVariants = cva(
       size: "default",
     },
   },
-);
+)
 
 interface PageHeaderHeadingProps
   extends React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 }
 
 function PageHeaderHeading({
@@ -60,7 +60,7 @@ function PageHeaderHeading({
 }: PageHeaderHeadingProps) {
   return (
     <Comp className={cn(headingVariants({ size, className }))} {...props} />
-  );
+  )
 }
 
 const descriptionVariants = cva(
@@ -77,7 +77,7 @@ const descriptionVariants = cva(
       size: "default",
     },
   },
-);
+)
 
 interface PageHeaderDescriptionProps
   extends React.HTMLAttributes<HTMLParagraphElement>,
@@ -90,7 +90,7 @@ function PageHeaderDescription({
 }: PageHeaderDescriptionProps) {
   return (
     <p className={cn(descriptionVariants({ size, className }))} {...props} />
-  );
+  )
 }
 
 function PageActions({
@@ -105,7 +105,7 @@ function PageActions({
       )}
       {...props}
     />
-  );
+  )
 }
 
-export { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading };
+export { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading }

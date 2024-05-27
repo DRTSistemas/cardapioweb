@@ -4,12 +4,12 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 
 interface SettingsCardProps {
-  title: string;
-  description?: string;
-  children: React.ReactNode;
+  title: string
+  description?: string
+  children: React.ReactNode
 }
 
 export function SettingsCard({
@@ -25,5 +25,5 @@ export function SettingsCard({
       </CardHeader>
       <CardContent>{children}</CardContent>
     </Card>
-  );
+  )
 }

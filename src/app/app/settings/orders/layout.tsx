@@ -1,10 +1,10 @@
-import { PageHeader, PageHeaderHeading } from "@/components/page-header";
+import { PageHeader, PageHeaderHeading } from "@/components/page-header"
 
-import { Shell } from "@/components/shell";
-import { SettingsLayoutWithNav } from "../_components/settings-nav";
+import { Shell } from "@/components/shell"
+import { SettingsLayoutWithNav } from "../_components/settings-nav"
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function Layout({ children }: LayoutProps) {
@@ -34,7 +34,7 @@ export default function Layout({ children }: LayoutProps) {
       href: "/app/settings/orders/cancel-order",
       segment: "cancel-order",
     },
-  ];
+  ]
 
   return (
     <Shell variant="sidebar" className="gap-4">
@@ -46,5 +46,5 @@ export default function Layout({ children }: LayoutProps) {
 
       <SettingsLayoutWithNav items={items}>{children}</SettingsLayoutWithNav>
     </Shell>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-import { MenuHeaderDesktop } from "../_components/menu-header-desktop";
-import { MenuHeaderMobile } from "../_components/menu-header-mobile";
-import { MenuNavMobile } from "../_components/menu-nav-mobile";
-import { MenuSidebar } from "../_components/menu-sidebar";
+import { MenuHeaderDesktop } from "../_components/menu-header-desktop"
+import { MenuHeaderMobile } from "../_components/menu-header-mobile"
+import { MenuNavMobile } from "../_components/menu-nav-mobile"
+import { MenuSidebar } from "../_components/menu-sidebar"
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function Layout({ children }: LayoutProps) {
@@ -20,5 +20,5 @@ export default function Layout({ children }: LayoutProps) {
       </div>
       <MenuNavMobile />
     </div>
-  );
+  )
 }

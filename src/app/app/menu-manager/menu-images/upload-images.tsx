@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { FileUploader } from "@/components/file-uploader";
+import { FileUploader } from "@/components/file-uploader"
 
 export function UploadCard() {
   return (
@@ -8,5 +8,5 @@ export function UploadCard() {
       <h3 className="font-semibold">Nome do item</h3>
       <FileUploader />
     </div>
-  );
+  )
 }

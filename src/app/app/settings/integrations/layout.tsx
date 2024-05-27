@@ -1,8 +1,8 @@
-import { PageHeader, PageHeaderHeading } from "@/components/page-header";
-import { Shell } from "@/components/shell";
+import { PageHeader, PageHeaderHeading } from "@/components/page-header"
+import { Shell } from "@/components/shell"
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function Layout({ children }: LayoutProps) {
@@ -15,5 +15,5 @@ export default function Layout({ children }: LayoutProps) {
       </PageHeader>
       {children}
     </Shell>
-  );
+  )
 }

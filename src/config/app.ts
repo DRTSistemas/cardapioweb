@@ -1,28 +1,28 @@
-import type { Icons } from "@/components/icons";
-export type Nav = (NavWithItems | NavWithoutItems | NavDivider)[];
+import type { Icons } from "@/components/icons"
+export type Nav = (NavWithItems | NavWithoutItems | NavDivider)[]
 
 type NavWithItems = {
-  title: string;
-  icon: keyof typeof Icons;
+  title: string
+  icon: keyof typeof Icons
   items: {
-    title: string;
-    href: string;
-    segment: string | null;
-    disabled: boolean;
-  }[];
-};
+    title: string
+    href: string
+    segment: string | null
+    disabled: boolean
+  }[]
+}
 
 type NavWithoutItems = {
-  title: string;
-  icon: keyof typeof Icons;
-  href: string;
-  segment: string | null;
-  disabled: boolean;
-};
+  title: string
+  icon: keyof typeof Icons
+  href: string
+  segment: string | null
+  disabled: boolean
+}
 
 type NavDivider = {
-  title: string;
-};
+  title: string
+}
 
 export const appConfig = {
   mainNav: [
@@ -217,4 +217,4 @@ export const appConfig = {
       ],
     },
   ] satisfies Nav,
-};
+}

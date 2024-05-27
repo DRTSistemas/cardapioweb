@@ -1,11 +1,10 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -13,13 +12,14 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
 
-import { toast } from "@/components/ui/use-toast";
-import { ChevronDownIcon, MinusIcon, PlusIcon } from "lucide-react";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
+import { toast } from "@/components/ui/use-toast"
+import { ChevronDownIcon, MinusIcon, PlusIcon } from "lucide-react"
 
 const profileFormSchema = z.object({
   printer_model: z.string(),
@@ -28,15 +28,15 @@ const profileFormSchema = z.object({
     required_error: "Please select a font.",
   }),
   remove_ac: z.boolean().default(false).optional(),
-});
+})
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 export function PrinterInfoForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     mode: "onChange",
-  });
+  })
 
   function onSubmit(data: ProfileFormValues) {
     toast({
@@ -46,7 +46,7 @@ export function PrinterInfoForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    });
+    })
   }
 
   return (
@@ -88,7 +88,7 @@ export function PrinterInfoForm() {
                       <option value="system">3 caracteres</option>
                     </select>
                   </FormControl>
-                  <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
+                  <ChevronDownIcon className="absolute top-2.5 right-3 h-4 w-4 opacity-50" />
                 </div>
 
                 <FormMessage />
@@ -97,7 +97,7 @@ export function PrinterInfoForm() {
           />
           <div className="flex flex-col gap-4">
             <Label>Numero de vias</Label>
-            <div className="xs:w-auto xs:justify-normal flex w-full items-center justify-between space-x-2">
+            <div className="flex w-full items-center justify-between space-x-2 xs:w-auto xs:justify-normal">
               <div className="flex items-center">
                 <Button
                   type="button"
@@ -147,5 +147,5 @@ export function PrinterInfoForm() {
         <Button type="submit">Salvar</Button>
       </form>
     </Form>
-  );
+  )
 }

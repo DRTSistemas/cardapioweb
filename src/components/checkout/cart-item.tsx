@@ -1,17 +1,17 @@
-import { cn, formatPrice } from "@/lib/utils";
-import { Icons } from "../icons";
-import { Separator } from "../ui/separator";
-import { UpdateCart } from "./update-cart";
+import { cn, formatPrice } from "@/lib/utils"
+import { Icons } from "../icons"
+import { Separator } from "../ui/separator"
+import { UpdateCart } from "./update-cart"
 
 interface CartItemProps {
   item: {
-    id: number;
-    name: string;
-    price: number;
-    quantity: number;
-    isEditable: boolean;
-  };
-  variant: "default";
+    id: number
+    name: string
+    price: number
+    quantity: number
+    isEditable: boolean
+  }
+  variant: "default"
 }
 
 export function CartItem({ variant, item }: CartItemProps) {
@@ -33,9 +33,9 @@ export function CartItem({ variant, item }: CartItemProps) {
           </div>
 
           <div className="flex flex-col space-y-1 self-start">
-            <span className="text-sm font-medium">{item.name}</span>
+            <span className="font-medium text-sm">{item.name}</span>
 
-            <span className="text-xs text-muted-foreground">
+            <span className="text-muted-foreground text-xs">
               {formatPrice(item.price)} x {item.quantity} ={" "}
               {formatPrice(
                 (Number(item.price) * Number(item.quantity)).toFixed(2),
@@ -47,5 +47,5 @@ export function CartItem({ variant, item }: CartItemProps) {
       </div>
       {variant === "default" ? <Separator /> : null}
     </div>
-  );
+  )
 }

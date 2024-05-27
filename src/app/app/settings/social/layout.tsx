@@ -1,10 +1,10 @@
-import { Shell } from "@/components/shell";
+import { Shell } from "@/components/shell"
 
-import { PageHeader, PageHeaderHeading } from "@/components/page-header";
-import { SettingsLayoutWithNav } from "../_components/settings-nav";
+import { PageHeader, PageHeaderHeading } from "@/components/page-header"
+import { SettingsLayoutWithNav } from "../_components/settings-nav"
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function Layout({ children }: LayoutProps) {
@@ -19,7 +19,7 @@ export default function Layout({ children }: LayoutProps) {
       href: "/app/settings/social/facebook-instagram",
       segment: "facebook-instagram",
     },
-  ];
+  ]
   return (
     <Shell variant="sidebar">
       <PageHeader>
@@ -29,5 +29,5 @@ export default function Layout({ children }: LayoutProps) {
       </PageHeader>
       <SettingsLayoutWithNav items={items}>{children}</SettingsLayoutWithNav>
     </Shell>
-  );
+  )
 }

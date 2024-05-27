@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
 /* eslint @typescript-eslint/no-explicit-any:0  */
 /* eslint @typescript-eslint/no-unsafe-member-access:0  */
 /* eslint @typescript-eslint/no-unsafe-argument:0  */
 /* eslint @typescript-eslint/no-unsafe-assignment:0   */
 
-import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd"
 
-import React from "react";
+import React from "react"
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 const data = [
   {
@@ -45,63 +45,64 @@ const data = [
     name: "Prontos para entrega",
     items: [],
   },
-];
+]
 
 export function Kanban() {
-  const [orderedData, setOrderedData] = React.useState(data);
+  const [orderedData, setOrderedData] = React.useState(data)
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   async function onDragEnd(result: any) {
-    const { destination, source, type } = result;
+    const { destination, source, type } = result
 
-    if (!destination) return;
+    if (!destination) return
 
     if (
       destination.droppableId === source.droppableId &&
       destination.index === source.index
     ) {
-      return;
+      return
     }
 
     if (type === "order") {
-      const newOrderedData = [...orderedData];
-      console.log(newOrderedData);
+      const newOrderedData = [...orderedData]
+      console.log(newOrderedData)
       const sourceStage = newOrderedData.find(
         (stage) => stage.id === source.droppableId,
-      );
+      )
       const destStage = newOrderedData.find(
         (stage) => stage.id === destination.droppableId,
-      );
+      )
 
       if (!sourceStage || !destStage) {
-        return;
+        return
       }
 
       if (!sourceStage.items) {
-        sourceStage.items = [];
+        sourceStage.items = []
       }
 
       if (!destStage.items) {
-        destStage.items = [];
+        destStage.items = []
       }
 
       if (source.droppableId !== destination.droppableId) {
-        const [movedOrder] = sourceStage.items.splice(source.index, 1);
+        const [movedOrder] = sourceStage.items.splice(source.index, 1)
 
         if (!movedOrder) {
-          return;
+          return
         }
 
-        destStage.items.splice(destination.index, 0, movedOrder);
+        destStage.items.splice(destination.index, 0, movedOrder)
 
-        setOrderedData(newOrderedData);
+        setOrderedData(newOrderedData)
       }
     }
   }
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   React.useEffect(() => {
-    setOrderedData(data);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+    setOrderedData(data)
+  }, [data])
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -110,13 +111,13 @@ export function Kanban() {
           // Column
           <div key={stage.id} className="w-full min-w-[340px] space-y-2">
             <div
-              className={cn("flex items-center justify-between rounded  p-3", {
-                "bg-yellow-500   dark:bg-yellow-500/70": idx === 0,
+              className={cn("flex items-center justify-between rounded p-3", {
+                "bg-yellow-500 dark:bg-yellow-500/70": idx === 0,
                 "bg-orange-500 dark:bg-orange-500/70": idx === 1,
                 "bg-green-500 dark:bg-green-500/70": idx === 2,
               })}
             >
-              <p className="text-sm font-semibold">{stage.name}</p>
+              <p className="font-semibold text-sm">{stage.name}</p>
               <div className="flex gap-1">
                 <Button variant={"outline"} size={"icon"}>
                   {stage.items.length}
@@ -158,7 +159,7 @@ export function Kanban() {
                                 </div>
                               </div>
                             </div>
-                            <div className="text-xs font-medium">
+                            <div className="font-medium text-xs">
                               {order.type}
                             </div>
                           </div>
@@ -174,5 +175,5 @@ export function Kanban() {
         ))}
       </div>
     </DragDropContext>
-  );
+  )
 }

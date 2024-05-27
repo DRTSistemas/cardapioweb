@@ -1,8 +1,8 @@
-import { CartItem } from "@/components/checkout/cart-item";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { ChevronLeft } from "lucide-react";
-import Link from "next/link";
+import { CartItem } from "@/components/checkout/cart-item"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { ChevronLeft } from "lucide-react"
+import Link from "next/link"
 
 const products = [
   {
@@ -40,7 +40,7 @@ const products = [
     quantity: 20,
     isEditable: true,
   },
-];
+]
 
 export default function CartPage() {
   return (
@@ -52,7 +52,7 @@ export default function CartPage() {
         >
           <ChevronLeft className="size-4" />
         </Link>
-        <h1 className="text-lg font-semibold">Carrinho</h1>
+        <h1 className="font-semibold text-lg">Carrinho</h1>
       </div>
       <div className={cn("flex w-full flex-col gap-5")}>
         {products.map((item) => (
@@ -60,5 +60,5 @@ export default function CartPage() {
         ))}
       </div>
     </main>
-  );
+  )
 }

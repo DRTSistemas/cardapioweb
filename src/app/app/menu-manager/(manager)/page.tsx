@@ -1,7 +1,7 @@
-import { PageHeader, PageHeaderHeading } from "@/components/page-header";
-import { Shell } from "@/components/shell";
+import { PageHeader, PageHeaderHeading } from "@/components/page-header"
+import { Shell } from "@/components/shell"
 
-import { Categories } from "./categories";
+import { Categories } from "./categories"
 
 export default function Page() {
   return (
@@ -11,5 +11,5 @@ export default function Page() {
       </PageHeader>
       <Categories />
     </Shell>
-  );
+  )
 }

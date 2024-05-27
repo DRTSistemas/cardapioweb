@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import { MinusIcon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+import { MinusIcon, PlusIcon, TrashIcon } from "@radix-ui/react-icons"
+import * as React from "react"
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 
 export function UpdateCart() {
-  const id = React.useId();
+  const id = React.useId()
 
   return (
     <div className="flex w-full items-start justify-start space-x-2 md:items-end md:justify-end">
@@ -47,5 +47,5 @@ export function UpdateCart() {
         <span className="sr-only">Delete item</span>
       </Button>
     </div>
-  );
+  )
 }

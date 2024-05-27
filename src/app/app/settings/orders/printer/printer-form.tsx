@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 
 import {
   Form,
@@ -13,29 +13,29 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@/components/ui/form";
+} from "@/components/ui/form"
 
-import { Switch } from "@/components/ui/switch";
-import { toast } from "@/components/ui/use-toast";
+import { Switch } from "@/components/ui/switch"
+import { toast } from "@/components/ui/use-toast"
 
 const notificationsFormSchema = z.object({
   auto_printer: z.boolean().default(false).optional(),
   auto_kds: z.boolean().default(false).optional(),
-});
+})
 
-type NotificationsFormValues = z.infer<typeof notificationsFormSchema>;
+type NotificationsFormValues = z.infer<typeof notificationsFormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<NotificationsFormValues> = {
   auto_printer: true,
   auto_kds: false,
-};
+}
 
 export function PrinterForm() {
   const form = useForm<NotificationsFormValues>({
     resolver: zodResolver(notificationsFormSchema),
     defaultValues,
-  });
+  })
 
   function onSubmit(data: NotificationsFormValues) {
     toast({
@@ -45,7 +45,7 @@ export function PrinterForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    });
+    })
   }
 
   return (
@@ -103,5 +103,5 @@ export function PrinterForm() {
         <Button type="submit">Salvar</Button>
       </form>
     </Form>
-  );
+  )
 }

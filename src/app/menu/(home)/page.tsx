@@ -1,8 +1,8 @@
-import { PageHeaderHeading } from "@/components/page-header";
+import { PageHeaderHeading } from "@/components/page-header"
 
-import React from "react";
-import { ProductCard } from "./_components/product-card";
-import { products as items } from "@/mocks/products";
+import { products as items } from "@/mocks/products"
+import React from "react"
+import { ProductCard } from "./_components/product-card"
 
 export default function MenuIndex() {
   return (
@@ -12,7 +12,7 @@ export default function MenuIndex() {
           <PageHeaderHeading as="h3" size="sm">
             {category.categoria}
           </PageHeaderHeading>
-          <div className="mt-4 grid grid-cols-1  gap-4 lg:grid-cols-2">
+          <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">
             {category.items.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -20,5 +20,5 @@ export default function MenuIndex() {
         </div>
       ))}
     </div>
-  );
+  )
 }

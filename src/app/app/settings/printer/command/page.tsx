@@ -1,5 +1,5 @@
-import { ComandaSettingsPrinterForm } from "./comanda-settings-printer-form";
-import { SettingsCard } from "@/components/cards/settings-card";
+import { SettingsCard } from "@/components/cards/settings-card"
+import { ComandaSettingsPrinterForm } from "./comanda-settings-printer-form"
 
 export default function Page() {
   return (
@@ -8,5 +8,5 @@ export default function Page() {
         <ComandaSettingsPrinterForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

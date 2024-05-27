@@ -1,5 +1,5 @@
-import { AvatarIcon, DashboardIcon, ImageIcon } from "@radix-ui/react-icons";
-import type { IconProps } from "@radix-ui/react-icons/dist/types";
+import { AvatarIcon, DashboardIcon, ImageIcon } from "@radix-ui/react-icons"
+import type { IconProps } from "@radix-ui/react-icons/dist/types"
 import {
   Bot,
   Calendar,
@@ -10,7 +10,7 @@ import {
   Server,
   ShoppingCart,
   Ticket,
-} from "lucide-react";
+} from "lucide-react"
 
 export const Icons = {
   menu: ({ ...props }: IconProps) => (
@@ -27,21 +27,21 @@ export const Icons = {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-      ></path>
+      />
       <path
         d="M3 12H16"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-      ></path>
+      />
       <path
         d="M3 19H21"
         stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-      ></path>
+      />
     </svg>
   ),
   spinner: (props: IconProps) => (
@@ -174,8 +174,8 @@ export const Icons = {
   bot: Bot,
   coupon: Ticket,
   cart: ShoppingCart,
-};
+}
 export {
   EyeOpenIcon,
   EyeNoneIcon as EyeCloseIcon,
-} from "@radix-ui/react-icons";
+} from "@radix-ui/react-icons"

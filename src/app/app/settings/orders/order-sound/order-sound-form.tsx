@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 
 import {
   Form,
@@ -13,11 +13,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+} from "@/components/ui/form"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
-import { toast } from "@/components/ui/use-toast";
-import { CardDescription } from "@/components/ui/card";
+import { CardDescription } from "@/components/ui/card"
+import { toast } from "@/components/ui/use-toast"
 
 const notificationsFormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], {
@@ -28,9 +28,9 @@ const notificationsFormSchema = z.object({
   social_emails: z.boolean().default(false).optional(),
   marketing_emails: z.boolean().default(false).optional(),
   security_emails: z.boolean(),
-});
+})
 
-type NotificationsFormValues = z.infer<typeof notificationsFormSchema>;
+type NotificationsFormValues = z.infer<typeof notificationsFormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<NotificationsFormValues> = {
@@ -38,13 +38,13 @@ const defaultValues: Partial<NotificationsFormValues> = {
   marketing_emails: false,
   social_emails: true,
   security_emails: true,
-};
+}
 
 export function OrderSoundForm() {
   const form = useForm<NotificationsFormValues>({
     resolver: zodResolver(notificationsFormSchema),
     defaultValues,
-  });
+  })
 
   function onSubmit(data: NotificationsFormValues) {
     toast({
@@ -54,13 +54,13 @@ export function OrderSoundForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    });
+    })
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
-        <h3 className="text-xl font-semibold">
+        <h3 className="font-semibold text-xl">
           Tela inicial - Meus pedidos
           <CardDescription>
             A campainha tocará sempre que seu estabelecimento receber um pedido
@@ -138,7 +138,7 @@ export function OrderSoundForm() {
         </div>
 
         <div className="space-y-8">
-          <h3 className="text-xl font-semibold">
+          <h3 className="font-semibold text-xl">
             Tela inicial - Meus pedidos
             <CardDescription>
               A campainha tocará sempre que seu estabelecimento receber um
@@ -187,5 +187,5 @@ export function OrderSoundForm() {
         <Button type="submit">Salvar</Button>
       </form>
     </Form>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import { Shell } from "@/components/shell";
-import { Kanban } from "../_components/orders-board";
-import { PageHeader, PageHeaderHeading } from "@/components/page-header";
+import { PageHeader, PageHeaderHeading } from "@/components/page-header"
+import { Shell } from "@/components/shell"
+import { Kanban } from "../_components/orders-board"
 
 export default function AppIndex() {
   return (
@@ -13,5 +13,5 @@ export default function AppIndex() {
 
       <Kanban />
     </Shell>
-  );
+  )
 }

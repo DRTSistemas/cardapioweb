@@ -1,10 +1,10 @@
-import { Shell } from "@/components/shell";
+import { Shell } from "@/components/shell"
 
-import { PageHeader, PageHeaderHeading } from "@/components/page-header";
-import { SettingsLayoutWithNav } from "../_components/settings-nav";
+import { PageHeader, PageHeaderHeading } from "@/components/page-header"
+import { SettingsLayoutWithNav } from "../_components/settings-nav"
 
 interface SettingsLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function Layout({ children }: SettingsLayoutProps) {
@@ -49,7 +49,7 @@ export default function Layout({ children }: SettingsLayoutProps) {
       href: "/app/settings/meu-web/clone-menu",
       segment: "clone-menu",
     },
-  ];
+  ]
 
   return (
     <Shell variant="sidebar" className="gap-4">
@@ -61,5 +61,5 @@ export default function Layout({ children }: SettingsLayoutProps) {
 
       <SettingsLayoutWithNav items={items}>{children}</SettingsLayoutWithNav>
     </Shell>
-  );
+  )
 }

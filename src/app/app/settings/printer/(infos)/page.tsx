@@ -1,5 +1,5 @@
-import { PrinterInfoForm } from "./printer-info-form";
-import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
+import { PrinterInfoForm } from "./printer-info-form"
 
 export default function Page() {
   return (
@@ -11,5 +11,5 @@ export default function Page() {
         <PrinterInfoForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

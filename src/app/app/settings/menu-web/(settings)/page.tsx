@@ -1,5 +1,5 @@
-import { MenuWebSettingsForm } from "./menu-web-settings-form";
-import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
+import { MenuWebSettingsForm } from "./menu-web-settings-form"
 
 export default function Page() {
   return (
@@ -8,5 +8,5 @@ export default function Page() {
         <MenuWebSettingsForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

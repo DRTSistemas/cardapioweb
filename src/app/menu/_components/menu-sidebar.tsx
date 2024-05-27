@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { ChevronRight, Package2 } from "lucide-react";
+import { ChevronRight, Package2 } from "lucide-react"
+import Link from "next/link"
 
-import { Button } from "@/components/ui/button";
-import { products as categorias } from "@/mocks/products";
+import { Button } from "@/components/ui/button"
+import { products as categorias } from "@/mocks/products"
 
 export function MenuSidebar() {
   return (
@@ -18,7 +18,7 @@ export function MenuSidebar() {
           </Button>
         </div>
         <div className="flex-1">
-          <nav className="grid items-start gap-1 px-2 text-sm font-medium">
+          <nav className="grid items-start gap-1 px-2 font-medium text-sm">
             {categorias.map(({ categoria }) => (
               <Link
                 key={categoria}
@@ -33,5 +33,5 @@ export function MenuSidebar() {
         </div>
       </div>
     </div>
-  );
+  )
 }

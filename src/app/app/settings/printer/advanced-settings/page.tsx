@@ -1,5 +1,5 @@
-import { AdvanvedSettingsPrinterForm } from "./advanced-settings-printer-form";
-import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
+import { AdvanvedSettingsPrinterForm } from "./advanced-settings-printer-form"
 
 export default function Page() {
   return (
@@ -11,5 +11,5 @@ export default function Page() {
         <AdvanvedSettingsPrinterForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

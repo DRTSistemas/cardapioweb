@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 
 import {
   Form,
@@ -13,19 +13,19 @@ import {
   FormField,
   FormItem,
   FormLabel,
-} from "@/components/ui/form";
+} from "@/components/ui/form"
 
-import { Switch } from "@/components/ui/switch";
-import { toast } from "@/components/ui/use-toast";
+import { Switch } from "@/components/ui/switch"
+import { toast } from "@/components/ui/use-toast"
 
 const notificationsFormSchema = z.object({
   whatsapp: z.boolean().default(false).optional(),
   facebook: z.boolean().default(false).optional(),
   instagram: z.boolean().default(false).optional(),
   webmenu: z.boolean().default(false).optional(),
-});
+})
 
-type NotificationsFormValues = z.infer<typeof notificationsFormSchema>;
+type NotificationsFormValues = z.infer<typeof notificationsFormSchema>
 
 // This can come from your database or API.
 const defaultValues: Partial<NotificationsFormValues> = {
@@ -33,13 +33,13 @@ const defaultValues: Partial<NotificationsFormValues> = {
   facebook: false,
   instagram: true,
   webmenu: false,
-};
+}
 
 export function MenuWebSettingsForm() {
   const form = useForm<NotificationsFormValues>({
     resolver: zodResolver(notificationsFormSchema),
     defaultValues,
-  });
+  })
 
   function onSubmit(data: NotificationsFormValues) {
     toast({
@@ -49,7 +49,7 @@ export function MenuWebSettingsForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    });
+    })
   }
 
   return (
@@ -174,5 +174,5 @@ export function MenuWebSettingsForm() {
         <Button type="submit">Salvar</Button>
       </form>
     </Form>
-  );
+  )
 }

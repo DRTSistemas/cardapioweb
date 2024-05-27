@@ -1,5 +1,5 @@
-import { OrderSequenceForm } from "./order-sequence-form";
-import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
+import { OrderSequenceForm } from "./order-sequence-form"
 
 export default function Page() {
   return (
@@ -11,5 +11,5 @@ export default function Page() {
         <OrderSequenceForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

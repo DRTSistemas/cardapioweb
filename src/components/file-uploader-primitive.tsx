@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import Image from "next/image";
-import { Cross2Icon, UploadIcon } from "@radix-ui/react-icons";
-import { cva, type VariantProps } from "class-variance-authority";
+import { Cross2Icon, UploadIcon } from "@radix-ui/react-icons"
+import { type VariantProps, cva } from "class-variance-authority"
+import Image from "next/image"
+import * as React from "react"
 import {
-  useDropzone,
   type DropzoneOptions,
   type DropzoneState,
   type FileRejection,
-} from "react-dropzone";
-import { toast } from "sonner";
+  useDropzone,
+} from "react-dropzone"
+import { toast } from "sonner"
 
-import { cn, formatBytes } from "@/lib/utils";
-import { useControllableState } from "@/hooks/use-controllable-state";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Progress } from "@/components/ui/progress";
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Progress } from "@/components/ui/progress"
+import { useControllableState } from "@/hooks/use-controllable-state"
+import { cn, formatBytes } from "@/lib/utils"
 
 interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -25,7 +25,7 @@ interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default undefined
    * @example value={files}
    */
-  value?: File[];
+  value?: File[]
 
   /**
    * Function to be called when the value changes.
@@ -33,7 +33,7 @@ interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default undefined
    * @example onValueChange={(files) => setFiles(files)}
    */
-  onValueChange?: React.Dispatch<React.SetStateAction<File[]>>;
+  onValueChange?: React.Dispatch<React.SetStateAction<File[]>>
 
   /**
    * Function to be called when files are uploaded.
@@ -41,7 +41,7 @@ interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default undefined
    * @example onUpload={(files) => uploadFiles(files)}
    */
-  onUpload?: (files: File[]) => Promise<void>;
+  onUpload?: (files: File[]) => Promise<void>
 
   /**
    * Progress of the uploaded files.
@@ -49,7 +49,7 @@ interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default undefined
    * @example progresses={{ "file1.png": 50 }}
    */
-  progresses?: Record<string, number>;
+  progresses?: Record<string, number>
 
   /**
    * Options for the dropzone.
@@ -57,34 +57,34 @@ interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
    * @default undefined
    * @example opts={{ maxFiles: 3, multiple: true }}
    */
-  opts?: DropzoneOptions;
+  opts?: DropzoneOptions
 }
 
 interface FileUploaderContextProps extends DropzoneState {
-  files: File[];
-  maxFiles: number;
-  maxSize: number;
-  setFiles: (files: File[]) => void;
-  onRemove: (index: number) => void;
-  progresses?: Record<string, number>;
-  disabled: boolean;
+  files: File[]
+  maxFiles: number
+  maxSize: number
+  setFiles: (files: File[]) => void
+  onRemove: (index: number) => void
+  progresses?: Record<string, number>
+  disabled: boolean
 }
 
 const FileUploaderContext =
-  React.createContext<FileUploaderContextProps | null>(null);
+  React.createContext<FileUploaderContextProps | null>(null)
 
 function useFileUploader() {
-  const context = React.useContext(FileUploaderContext);
+  const context = React.useContext(FileUploaderContext)
 
   if (!context) {
-    throw new Error("useFileUploader must be used within a <FileUploader />");
+    throw new Error("useFileUploader must be used within a <FileUploader />")
   }
 
-  return context;
+  return context
 }
 
 function isFileWithPreview(file: File): file is File & { preview: string } {
-  return "preview" in file && typeof file.preview === "string";
+  return "preview" in file && typeof file.preview === "string"
 }
 
 const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
@@ -108,39 +108,39 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       multiple = false,
       disabled = false,
       ...dropzoneProps
-    } = opts ?? {};
+    } = opts ?? {}
 
     const [files, setFiles] = useControllableState({
       prop: valueProp,
       onChange: onValueChange,
-    });
+    })
 
     const onDrop = React.useCallback(
       (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
         if (!multiple && maxFiles === 1 && acceptedFiles.length > 1) {
-          toast.error("Cannot upload more than 1 file at a time");
-          return;
+          toast.error("Cannot upload more than 1 file at a time")
+          return
         }
 
         if ((files?.length ?? 0) + acceptedFiles.length > maxFiles) {
-          toast.error(`Cannot upload more than ${maxFiles} files`);
-          return;
+          toast.error(`Cannot upload more than ${maxFiles} files`)
+          return
         }
 
         const newFiles = acceptedFiles.map((file) =>
           Object.assign(file, {
             preview: URL.createObjectURL(file),
           }),
-        );
+        )
 
-        const updatedFiles = files ? [...files, ...newFiles] : newFiles;
+        const updatedFiles = files ? [...files, ...newFiles] : newFiles
 
-        setFiles(updatedFiles);
+        setFiles(updatedFiles)
 
         if (rejectedFiles.length > 0) {
           rejectedFiles.forEach(({ file }) => {
-            toast.error(`File ${file.name} was rejected`);
-          });
+            toast.error(`File ${file.name} was rejected`)
+          })
         }
 
         if (
@@ -149,43 +149,44 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
           updatedFiles.length <= maxFiles
         ) {
           const target =
-            updatedFiles.length > 0 ? `${updatedFiles.length} files` : `file`;
+            updatedFiles.length > 0 ? `${updatedFiles.length} files` : "file"
 
           toast.promise(onUpload(updatedFiles), {
             loading: `Uploading ${target}...`,
             success: () => {
-              setFiles([]);
-              return `${target} uploaded`;
+              setFiles([])
+              return `${target} uploaded`
             },
             error: `Failed to upload ${target}`,
-          });
+          })
         }
       },
 
       [files, maxFiles, multiple, onUpload, setFiles],
-    );
+    )
 
     function onRemove(index: number) {
-      if (!files) return;
-      const newFiles = files.filter((_, i) => i !== index);
-      setFiles(newFiles);
-      onValueChange?.(newFiles);
+      if (!files) return
+      const newFiles = files.filter((_, i) => i !== index)
+      setFiles(newFiles)
+      onValueChange?.(newFiles)
     }
 
     // Revoke preview url when component unmounts
+    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     React.useEffect(() => {
       return () => {
-        if (!files) return;
+        if (!files) return
         files.forEach((file) => {
           if (isFileWithPreview(file)) {
-            URL.revokeObjectURL(file.preview);
+            URL.revokeObjectURL(file.preview)
           }
-        });
-      };
+        })
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [])
 
-    const isDisabled = disabled || (files?.length ?? 0) >= maxFiles;
+    const isDisabled = disabled || (files?.length ?? 0) >= maxFiles
 
     const dropzone = useDropzone({
       onDrop,
@@ -195,7 +196,7 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       multiple,
       disabled: isDisabled,
       ...dropzoneProps,
-    });
+    })
 
     return (
       <FileUploaderContext.Provider
@@ -221,10 +222,10 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
           {children}
         </div>
       </FileUploaderContext.Provider>
-    );
+    )
   },
-);
-FileUploader.displayName = "FileUploader";
+)
+FileUploader.displayName = "FileUploader"
 
 const FileUploaderContent = React.forwardRef<
   HTMLDivElement,
@@ -234,9 +235,9 @@ const FileUploaderContent = React.forwardRef<
     <div ref={ref} className={cn(className)} {...props}>
       {children}
     </div>
-  );
-});
-FileUploaderContent.displayName = "FileUploaderContent";
+  )
+})
+FileUploaderContent.displayName = "FileUploaderContent"
 
 const fileUploaderInputVariants = cva(
   "group relative cursor-pointer focus-visible:outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
@@ -254,7 +255,7 @@ const fileUploaderInputVariants = cva(
       variant: "default",
     },
   },
-);
+)
 
 const FileUploaderTrigger = React.forwardRef<
   HTMLDivElement,
@@ -270,7 +271,7 @@ const FileUploaderTrigger = React.forwardRef<
     maxFiles,
     maxSize,
     disabled,
-  } = useFileUploader();
+  } = useFileUploader()
 
   return (
     <div
@@ -314,10 +315,14 @@ const FileUploaderTrigger = React.forwardRef<
             <p className="font-medium text-muted-foreground">
               Drag {`'n'`} drop files here, or click to select files
             </p>
-            <p className="text-sm text-muted-foreground/70">
+            <p className="text-muted-foreground/70 text-sm">
               You can upload
               {maxFiles > 1
-                ? ` ${maxFiles === Infinity ? "multiple" : maxFiles}
+                ? ` ${
+                    maxFiles === Number.POSITIVE_INFINITY
+                      ? "multiple"
+                      : maxFiles
+                  }
                       files (up to ${formatBytes(maxSize)} each)`
                 : ` a file with ${formatBytes(maxSize)}`}
             </p>
@@ -326,21 +331,21 @@ const FileUploaderTrigger = React.forwardRef<
       )}
       {children}
     </div>
-  );
-});
-FileUploaderTrigger.displayName = "FileUploaderTrigger";
+  )
+})
+FileUploaderTrigger.displayName = "FileUploaderTrigger"
 
 interface FileUploaderItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  file: File;
-  index: number;
-  progress?: number;
+  file: File
+  index: number
+  progress?: number
 }
 
 const FileUploaderItem = React.forwardRef<
   HTMLDivElement,
   FileUploaderItemProps
 >(({ file, index, progress, className, ...props }, ref) => {
-  const { onRemove } = useFileUploader();
+  const { onRemove } = useFileUploader()
 
   return (
     <div
@@ -361,10 +366,10 @@ const FileUploaderItem = React.forwardRef<
         ) : null}
         <div className="flex w-full flex-col gap-2">
           <div className="space-y-px">
-            <p className="line-clamp-1 text-sm font-medium text-foreground/80">
+            <p className="line-clamp-1 font-medium text-foreground/80 text-sm">
               {file.name}
             </p>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-muted-foreground text-xs">
               {formatBytes(file.size)}
             </p>
           </div>
@@ -379,18 +384,18 @@ const FileUploaderItem = React.forwardRef<
           className="size-7"
           onClick={() => onRemove(index)}
         >
-          <Cross2Icon className="size-4 " aria-hidden="true" />
+          <Cross2Icon className="size-4" aria-hidden="true" />
           <span className="sr-only">Remove file</span>
         </Button>
       </div>
     </div>
-  );
-});
-FileUploaderItem.displayName = "FileUploaderItem";
+  )
+})
+FileUploaderItem.displayName = "FileUploaderItem"
 
 export {
   FileUploader,
   FileUploaderContent,
   FileUploaderItem,
   FileUploaderTrigger,
-};
+}

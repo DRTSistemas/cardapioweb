@@ -1,11 +1,10 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Form,
   FormControl,
@@ -13,12 +12,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { cn } from "@/lib/utils"
 
-import { toast } from "@/components/ui/use-toast";
-import { ChevronDownIcon } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { toast } from "@/components/ui/use-toast"
+import { ChevronDownIcon } from "lucide-react"
 
 const profileFormSchema = z.object({
   header: z.string(),
@@ -26,16 +26,16 @@ const profileFormSchema = z.object({
   font: z.enum(["inter", "manrope", "system"]),
   font_size: z.enum(["1", "2", "3"]),
   esc_poc: z.enum(["yes", "no"]),
-});
+})
 
-type ProfileFormValues = z.infer<typeof profileFormSchema>;
+type ProfileFormValues = z.infer<typeof profileFormSchema>
 
 // This can come from your database or API.
 export function AdvanvedSettingsPrinterForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     mode: "onChange",
-  });
+  })
 
   function onSubmit(data: ProfileFormValues) {
     toast({
@@ -45,7 +45,7 @@ export function AdvanvedSettingsPrinterForm() {
           <code className="text-white">{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
-    });
+    })
   }
 
   return (
@@ -106,7 +106,7 @@ export function AdvanvedSettingsPrinterForm() {
                         <option value="system">System</option>
                       </select>
                     </FormControl>
-                    <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
+                    <ChevronDownIcon className="absolute top-2.5 right-3 h-4 w-4 opacity-50" />
                   </div>
                   <FormMessage />
                 </FormItem>
@@ -132,7 +132,7 @@ export function AdvanvedSettingsPrinterForm() {
                         <option value="system">3</option>
                       </select>
                     </FormControl>
-                    <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
+                    <ChevronDownIcon className="absolute top-2.5 right-3 h-4 w-4 opacity-50" />
                   </div>
                   <FormMessage />
                 </FormItem>
@@ -202,7 +202,7 @@ export function AdvanvedSettingsPrinterForm() {
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="flex w-full flex-row items-start "
+                      className="flex w-full flex-row items-start"
                     >
                       <FormItem className="flex w-1/2 items-center space-x-3 space-y-0">
                         <FormControl>
@@ -232,7 +232,7 @@ export function AdvanvedSettingsPrinterForm() {
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="flex w-full flex-row items-start "
+                      className="flex w-full flex-row items-start"
                     >
                       <FormItem className="flex w-1/2 items-center space-x-3 space-y-0">
                         <FormControl>
@@ -275,7 +275,7 @@ export function AdvanvedSettingsPrinterForm() {
                           <option value="system">System</option>
                         </select>
                       </FormControl>
-                      <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
+                      <ChevronDownIcon className="absolute top-2.5 right-3 h-4 w-4 opacity-50" />
                     </div>
                     <FormMessage />
                   </FormItem>
@@ -301,7 +301,7 @@ export function AdvanvedSettingsPrinterForm() {
                           <option value="system">3</option>
                         </select>
                       </FormControl>
-                      <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
+                      <ChevronDownIcon className="absolute top-2.5 right-3 h-4 w-4 opacity-50" />
                     </div>
                     <FormMessage />
                   </FormItem>
@@ -344,7 +344,7 @@ export function AdvanvedSettingsPrinterForm() {
                           <option value="system">3</option>
                         </select>
                       </FormControl>
-                      <ChevronDownIcon className="absolute right-3 top-2.5 h-4 w-4 opacity-50" />
+                      <ChevronDownIcon className="absolute top-2.5 right-3 h-4 w-4 opacity-50" />
                     </div>
                     <FormMessage />
                   </FormItem>
@@ -375,5 +375,5 @@ export function AdvanvedSettingsPrinterForm() {
         <Button type="submit">Salvar</Button>
       </form>
     </Form>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { WhatsappSocialForm } from "./whatsapp-social-form";
-import { SettingsCard } from "../../../../../components/cards/settings-card";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
+import { WhatsappSocialForm } from "./whatsapp-social-form"
 
 export default function Page() {
   return (
@@ -8,5 +8,5 @@ export default function Page() {
         <WhatsappSocialForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

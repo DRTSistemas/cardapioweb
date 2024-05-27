@@ -1,21 +1,21 @@
-"use client";
+"use client"
 
-import Link from "next/link";
+import Link from "next/link"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-import { Button, type ButtonProps } from "@/components/ui/button";
+import { Icons } from "@/components/icons"
+import { Button, type ButtonProps } from "@/components/ui/button"
 import {
   Sheet,
   SheetClose,
   SheetContent,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { Icons } from "@/components/icons";
+} from "@/components/ui/sheet"
 
-import { useSidebar } from "./sidebar-provider";
-import { ArchiveX } from "lucide-react";
-import { useMediaQuery } from "@/hooks/use-media-query";
+import { useMediaQuery } from "@/hooks/use-media-query"
+import { ArchiveX } from "lucide-react"
+import { useSidebar } from "./sidebar-provider"
 
 export interface DashboardSidebarSheetProps
   extends React.ComponentPropsWithRef<typeof SheetTrigger>,
@@ -26,10 +26,10 @@ export function AppSidebarSheet({
   className,
   ...props
 }: DashboardSidebarSheetProps) {
-  const { open, setOpen } = useSidebar();
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const { open, setOpen } = useSidebar()
+  const isDesktop = useMediaQuery("(min-width: 1024px)")
 
-  if (isDesktop) return null;
+  if (isDesktop) return null
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -38,7 +38,7 @@ export function AppSidebarSheet({
           variant="ghost"
           size="icon"
           className={cn(
-            "size-5 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0",
+            "size-5 focus-visible:bg-transparent hover:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0",
             className,
           )}
           {...props}
@@ -54,7 +54,7 @@ export function AppSidebarSheet({
         <SheetClose asChild>
           <Link
             href="/"
-            className="font-heading mx-6 flex items-center self-start tracking-wider text-foreground/90 transition-colors hover:text-foreground"
+            className="mx-6 flex items-center self-start font-heading text-foreground/90 tracking-wider transition-colors hover:text-foreground"
           >
             <ArchiveX className="size-6" aria-hidden="true" />
           </Link>
@@ -62,5 +62,5 @@ export function AppSidebarSheet({
         {children}
       </SheetContent>
     </Sheet>
-  );
+  )
 }

@@ -1,18 +1,18 @@
-import { Input } from "@/components/ui/input";
-import { AppHeader } from "./_components/app-header";
-import { AppSidebar } from "./_components/app-sidebar";
-import { SidebarProvider } from "./_components/sidebar-provider";
-import { AppSidebarSheet } from "./_components/app-sidebar-sheet";
+import { Input } from "@/components/ui/input"
+import { AppHeader } from "./_components/app-header"
+import { AppSidebar } from "./_components/app-sidebar"
+import { AppSidebarSheet } from "./_components/app-sidebar-sheet"
+import { SidebarProvider } from "./_components/sidebar-provider"
 
 interface AppLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function AppLayout({ children }: AppLayoutProps) {
   return (
     <SidebarProvider>
       <div className="grid min-h-screen w-full lg:grid-cols-[17.5rem_1fr]">
-        <AppSidebar className="top-0 z-30 hidden flex-col gap-4 border-r border-border/60 lg:sticky lg:block">
+        <AppSidebar className="top-0 z-30 hidden flex-col gap-4 border-border/60 border-r lg:sticky lg:block">
           <Input placeholder="Procurando por algo?" />
         </AppSidebar>
         <div className="flex flex-col">
@@ -29,5 +29,5 @@ export default function AppLayout({ children }: AppLayoutProps) {
         </div>
       </div>
     </SidebarProvider>
-  );
+  )
 }

@@ -1,30 +1,30 @@
-"use client";
+"use client"
 
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/icons"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+} from "@/components/ui/accordion"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import { Skeleton } from "@/components/ui/skeleton"
 import {
   Sortable,
   SortableDragHandle,
   SortableItem,
-} from "@/components/ui/sortable";
-import { DragHandleDots2Icon } from "@radix-ui/react-icons";
-import { ChevronDown, CirclePlus, CopyIcon, Flag, Trash } from "lucide-react";
-import React from "react";
+} from "@/components/ui/sortable"
+import { DragHandleDots2Icon } from "@radix-ui/react-icons"
+import { ChevronDown, CirclePlus, CopyIcon, Flag, Trash } from "lucide-react"
+import React from "react"
 const data = [
   {
     id: "1",
@@ -38,20 +38,20 @@ const data = [
     id: "3",
     name: "Sobremesas",
   },
-];
+]
 
 export function Categories() {
-  const [categories, setCategories] = React.useState(data);
-  const [mounted, setIsMounted] = React.useState(false);
+  const [categories, setCategories] = React.useState(data)
+  const [mounted, setIsMounted] = React.useState(false)
 
   React.useEffect(() => {
-    setIsMounted(true);
-    setCategories(data);
+    setIsMounted(true)
+    setCategories(data)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [data])
 
   if (!mounted) {
-    return <p>Carregando</p>;
+    return <p>Carregando</p>
   }
 
   return (
@@ -67,10 +67,10 @@ export function Categories() {
           <Sortable
             value={categories}
             onMove={({ activeIndex, overIndex }) => {
-              const newOrder = [...categories];
-              const [movedItem] = newOrder.splice(activeIndex, 1);
-              newOrder.splice(overIndex, 0, movedItem!);
-              setCategories(newOrder);
+              const newOrder = [...categories]
+              const [movedItem] = newOrder.splice(activeIndex, 1)
+              newOrder.splice(overIndex, 0, movedItem!)
+              setCategories(newOrder)
             }}
             overlay={
               <div className="grid grid-cols-2 items-center gap-2 rounded border border-dashed p-4">
@@ -108,7 +108,7 @@ export function Categories() {
 
                           <Input
                             defaultValue={item.name}
-                            className="h-8 border-none text-xl font-semibold"
+                            className="h-8 border-none font-semibold text-xl"
                           />
                         </div>
                         <Button
@@ -174,5 +174,5 @@ export function Categories() {
         </Accordion>
       </div>
     </div>
-  );
+  )
 }

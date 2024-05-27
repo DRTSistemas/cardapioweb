@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
-import { Card } from "@/components/ui/card";
+import { Card } from "@/components/ui/card"
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
 interface ProductCardProps extends React.HTMLAttributes<HTMLDivElement> {
   product: {
-    id: number;
-    nome: string;
-    descricao: string;
-    preco: number;
-    imagem: string;
-  };
+    id: number
+    nome: string
+    descricao: string
+    preco: number
+    imagem: string
+  }
 }
 
 export function ProductCard({ product }: ProductCardProps) {
@@ -22,9 +22,9 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="flex bg-muted/40 p-4 hover:bg-muted/45">
           <div className="flex flex-1 flex-col">
             <div className="grid items-start">
-              <h3 className="text-base font-medium">{product.nome}</h3>
+              <h3 className="font-medium text-base">{product.nome}</h3>
 
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="mt-1 text-muted-foreground text-sm">
                 {product.descricao}
               </p>
             </div>
@@ -45,5 +45,5 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
     </Card>
-  );
+  )
 }

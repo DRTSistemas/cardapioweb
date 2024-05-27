@@ -1,13 +1,13 @@
-import * as React from "react";
-import Link from "next/link";
+import Link from "next/link"
+import type * as React from "react"
 
-import { cn } from "@/lib/utils";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { cn } from "@/lib/utils"
 
-import { AppNavItems } from "./app-nav-items";
+import { AppNavItems } from "./app-nav-items"
 
 interface DashboardSidebarProps extends React.HTMLAttributes<HTMLElement> {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export function AppSidebar({
@@ -17,7 +17,7 @@ export function AppSidebar({
 }: DashboardSidebarProps) {
   return (
     <aside className={cn("h-screen w-full", className)} {...props}>
-      <div className="hidden h-[3.55rem] items-center border-b border-border/60 px-4 lg:flex lg:px-6">
+      <div className="hidden h-[3.55rem] items-center border-border/60 border-b px-4 lg:flex lg:px-6">
         <Link
           href="/app"
           className="flex w-fit items-center font-bold text-foreground/90 transition-colors hover:text-foreground"
@@ -32,5 +32,5 @@ export function AppSidebar({
         <AppNavItems className="mt-4" />
       </ScrollArea>
     </aside>
-  );
+  )
 }

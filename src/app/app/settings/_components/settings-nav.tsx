@@ -1,27 +1,27 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { cn } from "@/lib/utils"
+import Link from "next/link"
+import { useSelectedLayoutSegment } from "next/navigation"
 
 interface SettingsLayoutWithNavProps {
-  children: React.ReactNode;
+  children: React.ReactNode
   items: {
-    title: string;
-    href: string;
-    segment: string;
-  }[];
+    title: string
+    href: string
+    segment: string
+  }[]
 }
 
 export function SettingsLayoutWithNav({
   items,
   children,
 }: SettingsLayoutWithNavProps) {
-  const segment = useSelectedLayoutSegment();
+  const segment = useSelectedLayoutSegment()
 
   return (
-    <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
-      <nav className="grid gap-4 text-sm text-muted-foreground">
+    <div className="mx-auto grid w-full max-w-6xl items-start gap-6 lg:grid-cols-[250px_1fr] md:grid-cols-[180px_1fr]">
+      <nav className="grid gap-4 text-muted-foreground text-sm">
         {items.map((item) => (
           <Link
             key={item.title}
@@ -36,5 +36,5 @@ export function SettingsLayoutWithNav({
       </nav>
       {children}
     </div>
-  );
+  )
 }

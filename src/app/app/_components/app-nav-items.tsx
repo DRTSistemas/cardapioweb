@@ -1,31 +1,31 @@
-"use client";
+"use client"
 
-import Link from "next/link";
+import Link from "next/link"
 
+import { Icons } from "@/components/icons"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { cn } from "@/lib/utils";
-import { appConfig } from "@/config/app";
-import { useSelectedLayoutSegments } from "next/navigation";
-import React from "react";
-import { Icons } from "@/components/icons";
-import { useSidebar } from "./sidebar-provider";
+} from "@/components/ui/accordion"
+import { appConfig } from "@/config/app"
+import { cn } from "@/lib/utils"
+import { useSelectedLayoutSegments } from "next/navigation"
+import React from "react"
+import { useSidebar } from "./sidebar-provider"
 
 interface AppNavItemsProps {
-  className?: string;
+  className?: string
 }
 
 export function AppNavItems({ className }: AppNavItemsProps) {
-  const layoutSegment = useSelectedLayoutSegments();
-  const { open, setOpen } = useSidebar();
-  const segment = layoutSegment[layoutSegment.length - 2];
-  const items = appConfig.mainNav;
-  if (!items?.length) return null;
-  console.log(segment);
+  const layoutSegment = useSelectedLayoutSegments()
+  const { open, setOpen } = useSidebar()
+  const segment = layoutSegment[layoutSegment.length - 2]
+  const items = appConfig.mainNav
+  if (!items?.length) return null
+  console.log(segment)
 
   return (
     <Accordion
@@ -35,7 +35,7 @@ export function AppNavItems({ className }: AppNavItemsProps) {
       {items.map((item) => {
         if (!item.href && !item.items) {
           return (
-            <div key={item.title + "divider"} className="relative my-2">
+            <div key={`${item.title}divider`} className="relative my-2">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t" />
               </div>
@@ -45,10 +45,10 @@ export function AppNavItems({ className }: AppNavItemsProps) {
                 </span>
               </div>
             </div>
-          );
+          )
         }
 
-        const Icon = Icons[item.icon];
+        const Icon = Icons[item.icon]
 
         return item.items ? (
           <AccordionItem
@@ -69,7 +69,7 @@ export function AppNavItems({ className }: AppNavItemsProps) {
                   key={subItem.title}
                   href={subItem.disabled ? "#" : subItem.href}
                   onClick={() => {
-                    if (open) setOpen(false);
+                    if (open) setOpen(false)
                   }}
                 >
                   <span
@@ -95,7 +95,7 @@ export function AppNavItems({ className }: AppNavItemsProps) {
             key={item.title}
             href={item.disabled ? "#" : item.href}
             onClick={() => {
-              if (open) setOpen(false);
+              if (open) setOpen(false)
             }}
           >
             <span
@@ -109,8 +109,8 @@ export function AppNavItems({ className }: AppNavItemsProps) {
               <span className="ml-2">{item.title}</span>
             </span>
           </Link>
-        );
+        )
       })}
     </Accordion>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { SettingsCard } from "../../../../../components/cards/settings-card";
-import { OrderSoundForm } from "./order-sound-form";
+import { SettingsCard } from "../../../../../components/cards/settings-card"
+import { OrderSoundForm } from "./order-sound-form"
 
 export default function Page() {
   return (
@@ -8,5 +8,5 @@ export default function Page() {
         <OrderSoundForm />
       </SettingsCard>
     </div>
-  );
+  )
 }

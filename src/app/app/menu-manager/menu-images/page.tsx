@@ -2,9 +2,9 @@ import {
   PageHeader,
   PageHeaderDescription,
   PageHeaderHeading,
-} from "@/components/page-header";
-import { Shell } from "@/components/shell";
-import { UploadCard } from "./upload-images";
+} from "@/components/page-header"
+import { Shell } from "@/components/shell"
+import { UploadCard } from "./upload-images"
 
 export default function Page() {
   return (
@@ -19,9 +19,10 @@ export default function Page() {
 
       <div className="grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
         {Array.from({ length: 8 }).map((_, idx) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
           <UploadCard key={idx} />
         ))}
       </div>
     </Shell>
-  );
+  )
 }

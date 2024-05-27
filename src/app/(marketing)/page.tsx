@@ -1,6 +1,6 @@
-import { Shell } from "@/components/shell";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
+import { Shell } from "@/components/shell"
+import { buttonVariants } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function HomePage() {
   return (
@@ -14,5 +14,5 @@ export default function HomePage() {
         </Link>
       </div>
     </Shell>
-  );
+  )
 }

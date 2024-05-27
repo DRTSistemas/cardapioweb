@@ -1,17 +1,17 @@
-"use client";
+"use client"
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 
-import { Input } from "@/components/ui/input";
-import { MinusIcon, PlusIcon } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { MinusIcon, PlusIcon } from "lucide-react"
 
 export function OrderSequenceForm() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
         <Label>Numeração atual*</Label>
-        <div className="xs:w-auto xs:justify-normal flex w-full items-center justify-between space-x-2">
+        <div className="flex w-full items-center justify-between space-x-2 xs:w-auto xs:justify-normal">
           <div className="flex items-center">
             <Button
               type="button"
@@ -41,7 +41,7 @@ export function OrderSequenceForm() {
       </div>
       <div className="flex flex-col gap-4">
         <Label>Dias para zerar*</Label>
-        <div className="xs:w-auto xs:justify-normal flex w-full items-center justify-between space-x-2">
+        <div className="flex w-full items-center justify-between space-x-2 xs:w-auto xs:justify-normal">
           <div className="flex items-center">
             <Button
               variant="outline"
@@ -70,5 +70,5 @@ export function OrderSequenceForm() {
         </div>
       </div>
     </div>
-  );
+  )
 }

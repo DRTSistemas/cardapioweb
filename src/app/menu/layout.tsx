@@ -1,9 +1,9 @@
-import React from "react";
+import type React from "react"
 
 interface MenuLayoutProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 export default function MenuLayout({ children }: MenuLayoutProps) {
-  return <div className="min-h-screen flex-1">{children}</div>;
+  return <div className="min-h-screen flex-1">{children}</div>
 }

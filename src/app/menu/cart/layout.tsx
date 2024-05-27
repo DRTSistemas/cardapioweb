@@ -7,9 +7,9 @@ export default function MenuLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex-1">
+    <div className="mb-16 min-h-screen flex-1">
       {children}
-      <div className="fixed bottom-0 z-50 w-full border-t border-border/60 p-4">
+      <div className="fixed bottom-0 z-50 w-full border-t border-border/60 bg-background p-4">
         <Button
           disabled
           className="mx-auto flex w-full items-center  justify-between md:w-2/3 lg:w-1/3"

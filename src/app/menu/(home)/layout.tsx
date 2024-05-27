@@ -9,7 +9,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
+    <div className="mb-16 grid min-h-screen w-full md:mb-0 lg:grid-cols-[280px_1fr]">
       <MenuSidebar />
       <div className="flex flex-col">
         <MenuHeaderMobile />

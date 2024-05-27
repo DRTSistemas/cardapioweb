@@ -30,3 +30,15 @@ export function formatBytes(
     sizeType === "accurate" ? accurateSizes[i] ?? "Bytest" : sizes[i] ?? "Bytes"
   }`;
 }
+
+export function formatPrice(
+  price: number | string, 
+  opts: Intl.NumberFormatOptions = {}
+) {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    notation: opts.notation ?? "compact",
+    ...opts,
+  }).format(Number(price));
+}
